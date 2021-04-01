@@ -53,7 +53,7 @@
 			<td style="text-align: center;"><input class="itemSelect"
 				type="checkbox" /></td>
 			<td>3</td>
-			<td>手机数码</td>
+			<td>电视数码</td>
 			<td>手机数码类商品</td>
 			<td><a href="">修改</a>|<a href="">删除</a></td>
 		</tr>
