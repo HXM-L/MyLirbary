@@ -9,5 +9,6 @@ public class bug {
 		*比如：getName(),取属性时应当使用name,且第一个字母需要小写。
 	*5.点击commit and Push提示不能连接到Can't connect to any repository: https://github.com/HXM-L/MyLirb时,有可能是访问不了github,可以在cmd窗口ping一下
 	*输入:ping github.com
+	*
 	 * */
 }
