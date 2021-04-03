@@ -251,7 +251,7 @@ h1.userpagetitle
 				<div id="userpagemenu">
 					<ul style="list-style-type:none">
 						<li>
-							<a class="select" href="adminPersonal.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
+							<a class="select" href="admin.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
 						</li>
 						<li>
 							<a class="select" href="updatePassword.jsp">修改密码</a>

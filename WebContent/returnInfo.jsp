@@ -263,7 +263,7 @@ h1.userpagetitle {
 						欢迎您，${User.name}
 						<div id="userpagemenu">
 							<ul style="list-style-type: none">
-								<li><a class="select" href="adminPersonal.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
+								<li><a class="select" href="admin.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
 								</li>
 								<li><a class="select" href="updatePassword.jsp">修改密码</a></li>
 								<li><a class="select" href="orderhistory.jsp">预约图书信息</a></li>
