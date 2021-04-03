@@ -194,19 +194,19 @@ h1.userpagetitle {
 }
 </style>
 <script type="text/javascript">
-	var userID="";
-	var userName="";
-	var userPwd="";
+	var userID = "";
+	var userName = "";
+	var userPwd = "";
 	function exit() {
 		location.href = "exit.do";
 	}
-	function getDay(id,name,pwd) {
-		userID=id;
-		userName=name;
-		userPwd=pwd;
-		console.log(id) 
-		console.log(name) 
-		console.log(pwd) 
+	function getDay(id, name, pwd) {
+		userID = id;
+		userName = name;
+		userPwd = pwd;
+		console.log(id)
+		console.log(name)
+		console.log(pwd)
 		let today = "";
 		let arry = [ '日', '一', '二', '三', '四', '五', '六' ];
 		let now = new Date();
@@ -217,7 +217,7 @@ h1.userpagetitle {
 		today += year + "年" + month + "月" + day + "日 星期" + arry[week];
 		document.getElementById("day").value = today;
 		document.getElementById("day").innerHTML = today;
-		
+
 	}
 </script>
 </head>
@@ -251,6 +251,7 @@ h1.userpagetitle {
 							<li><a class="select" href="admin.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
 							</li>
 							<li><a class="select" href="updatePwd.jsp">修改密码</a></li>
+
 							<li><a class="select" href="orderhistory.jsp">预约图书信息</a></li>
 							<li><a class="select" href="borrowing.jsp">当前借阅情况和续借</a></li>
 							<li><a class="select" href="urgeReturn.jsp">催还图书信息</a></li>
@@ -266,25 +267,23 @@ h1.userpagetitle {
 					<h1 class="userpagetitle">个人信息</h1>
 					<div id="userInfoContent">
 						<div class="infoline">
-							<span class="infoleft">管理员id：</span> <span class="inforight">${User.id}</span>
+							<span class="infoleft">管理员id:</span> <span class="inforight">${User.id}</span>
 						</div>
 						<div class="infoline">
-							<span class="infoleft">姓 名：</span> <span class="inforight">${User.name}</span>
+							<span class="infoleft">姓 名：</span> <input class="inforight"
+								value="${User.name}" />
 						</div>
 						<div class="infoline">
-							<span class="infoleft">电话：</span> <span class="inforight">${User.phone}</span>
+							<span class="infoleft">电 话：</span> <input class="inforight"
+								value="${User.phone}" />
 						</div>
 						<div class="infoline">
-							<span class="infoleft"> <a href="updateAdminInfo.jsp"><input
-									type="button" name="updateInfo" value="修改" /></a>
-							</span>
+							<input type="button" name="updateInfo" value="修改" />
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
-
 	</div>
-
 </body>
 </html>
