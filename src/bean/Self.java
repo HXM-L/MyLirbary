@@ -13,6 +13,7 @@ public class Self {	//书架表
 	public Self() {
 		super();
 	}
+	
 	public Self(String selfId, String bookname, String author, String publisherDate, int bookNum, int typeId,
 			String picture, String introduction, String publisher) {
 		super();
@@ -26,6 +27,7 @@ public class Self {	//书架表
 		this.introduction = introduction;
 		this.publisher = publisher;
 	}
+
 	public String getSelfId() {
 		return selfId;
 	}

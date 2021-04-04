@@ -20,7 +20,8 @@ public class FinRecordAction implements Action {
 		List<Borrrecord> list=bRecord.findRecordByBorrower();
 		session.setAttribute("RecordList", list);
 		System.out.println(list.get(0).getBorrowerId());
-		System.out.println("续借标志:"+list.get(0).getAginBorr());
+		System.out.println("图书名:"+list.get(0).getBookName());
+		System.out.println("图书名:"+list.get(1).getBookName());
 		return "borrowRecord.jsp";
 	}
 

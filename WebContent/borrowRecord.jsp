@@ -282,6 +282,7 @@ h1.userpagetitle {
 					<table class="tb" cellpadding="7" border="1" width="1200px">
 						<thead class="tbhead">
 							<tr>
+								<th>借阅记录号</th>
 								<th>图书ID号</th>
 								<th>图书名称</th>
 								<th>读者账号</th>
@@ -297,11 +298,13 @@ h1.userpagetitle {
 						<%
 						Self self=new Self();
 						SelfDao selfdao=new SelfDaoImpl();
+						BookDao bookDao=new BookDaoImpl();
 						%>
 							<c:forEach var="e" items="${RecordList}">
 								<tr>
+									<td>${e.borrRecordId}</td>
 									<td>${e.bookid}</td>
-									<td><%= selfdao.findBookBySelfId("01-02-A-05").getBookname()%></td>
+									<td>${e.bookName}</td>
 									<td>${e.borrowerId}</td>
 									<td>${e.borrTime}</td>
 									<td>${e.returnTime}</td>

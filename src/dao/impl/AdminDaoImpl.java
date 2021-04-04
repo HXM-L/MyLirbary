@@ -16,7 +16,7 @@ public class AdminDaoImpl extends BaseDao implements AdminDao {
 
 	@Override
 	public boolean updateAdminInfo(Admin user) {
-		String sql="update book set name=?,password=? where id=?";
+		String sql="update admin set name=?,phone=? where id=?";
 		List<Object> lp=new ArrayList<Object>();
 		lp.add(user.getName());
 		lp.add(user.getPhone());
