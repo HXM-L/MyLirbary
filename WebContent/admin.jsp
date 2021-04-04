@@ -199,6 +199,7 @@ h1.userpagetitle {
 	var userPwd="";
 	function exit() {
 		location.href = "exit.do";
+		
 	}
 	function getDay(id,name,pwd) {
 		userID=id;
@@ -215,7 +216,7 @@ h1.userpagetitle {
 		let day = now.getDate(); //日
 		let week = now.getDay(); //获取当前星期X(0-6,0代表星期天)
 		today += year + "年" + month + "月" + day + "日 星期" + arry[week];
-		document.getElementById("day").value = today;
+		/* document.getElementById("day").value = today; */
 		document.getElementById("day").innerHTML = today;
 		
 	}

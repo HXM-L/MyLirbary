@@ -254,7 +254,7 @@ h1.userpagetitle
 							<a class="select" href="admin.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
 						</li>
 						<li>
-							<a class="select" href="updatePassword.jsp">修改密码</a>
+							<a class="select" href="updatePwd.jsp">修改密码</a>
 						</li>						 
 						 					 
 						<li>
@@ -309,8 +309,6 @@ h1.userpagetitle
 				</form>
 		</div>	
 	</div>
-	 
 </div>
- 
 </body>
 </html>
