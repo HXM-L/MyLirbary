@@ -19,15 +19,8 @@ public class BooksborrowedhistoryAction implements Action {
 		// 需要获得用户id
 		String borrowerId = req.getParameter("bid");
 		List<Borrrecord> lb = null;
-		lb = brdao.findRecordByBorrowerId(borrowerId);// 借阅历史
-		if (lb.size() > 0) {
-			HttpSession session = req.getSession();
-			session.setAttribute("lb", lb);
-			return "";
-		} else {
-			req.setAttribute("str", "借阅记录为空！");
-			return "";
-		}
+		return borrowerId;
+		
 	}
 
 }

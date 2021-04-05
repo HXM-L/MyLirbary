@@ -2,15 +2,15 @@
 	pageEncoding="utf-8"%>
 <%@page import="java.util.List"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="dao.*" %>
-<%@page import="dao.impl.*" %>
-<%@page import="bean.*" %>
+<%@page import="dao.*"%>
+<%@page import="dao.impl.*"%>
+<%@page import="bean.*"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>我的图书馆</title>
+<title>借阅记录</title>
 <style>
 #header {
 	width: 101%;
@@ -198,8 +198,31 @@ h1.userpagetitle {
 #userInfoContent .infoline .inforight {
 	margin-left: 15px;
 }
-.tbhead{
-	text-align:center;
+
+.tbhead {
+	text-align: center;
+}
+
+.dialog {
+	clear: both;
+	position: relative;
+	width: 1600px;
+	height: 800px;
+	left: -200px;
+	top: -300px;
+	background-color: rgba(176,176,176,0.7);
+	z-index: 5;
+	position: relative;
+}
+
+.dialog>div {
+	position: absolute;
+	width: 1200px;
+	height: 620px;
+	background-color: white;
+	left:200px;
+	top:60px;
+	border:2px;
 }
 </style>
 <script type="text/javascript">
@@ -209,8 +232,8 @@ h1.userpagetitle {
 	function exit() {
 		location.href = "exit.do";
 	}
-	function searchRecord(){
-		location.href="finRecord.do"
+	function searchRecord() {
+		location.href = "finRecord.do"
 	}
 	function getDay(id, name, pwd) {
 		userID = id;
@@ -231,7 +254,6 @@ h1.userpagetitle {
 		document.getElementById("day").innerHTML = today;
 
 	}
-	
 </script>
 </head>
 <body onload="getDay('${id}','${User.name}','${User.password}')">
@@ -242,7 +264,7 @@ h1.userpagetitle {
 				<div class="fr">
 					&nbsp;&nbsp;<a href=" ">English</a><span>|</span> <a
 						href="login.jsp" class="unlogin">退出</a> <span>|</span> <a href=" ">检索历史</a>
-					<br> 今天是<span id="day" value=""></span>
+					<br> 今天是<span id="day"></span>
 				</div>
 			</div>
 		</div>
@@ -295,11 +317,11 @@ h1.userpagetitle {
 
 						</thead>
 						<tbody>
-						<%
-						Self self=new Self();
-						SelfDao selfdao=new SelfDaoImpl();
-						BookDao bookDao=new BookDaoImpl();
-						%>
+							<%
+								Self self = new Self();
+								SelfDao selfdao = new SelfDaoImpl();
+								BookDao bookDao = new BookDaoImpl();
+							%>
 							<c:forEach var="e" items="${RecordList}">
 								<tr>
 									<td>${e.borrRecordId}</td>
@@ -310,14 +332,16 @@ h1.userpagetitle {
 									<td>${e.returnTime}</td>
 									<td>${e.aginBorr}</td>
 									<td>${e.overTime}</td>
-									<td>
-										<a href=" ">修改</a> 
-										<a href="">删除</a>
-									</td>
+									<td><a
+										href="returnDialog.do?AppointPage=UpRecord&rID=${e.borrRecordId}">修改</a>
+										<a href="">删除</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
+					<div class="dialog">
+						<div></div>
+					</div>
 				</div>
 			</div>
 		</div>

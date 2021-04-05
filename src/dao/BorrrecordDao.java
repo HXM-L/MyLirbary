@@ -7,7 +7,7 @@ import bean.Reserve;
 
 public interface BorrrecordDao {
 
-	public List<Borrrecord> findRecordByBorrowerId(String borrowerId);// 查询借阅历史
+	public Borrrecord findRecordByBorrowerId(String borrowerId);// 查询指定记录id的借阅历史
 	
 	public List<Borrrecord> findRecordByBorrower();// 查询所有借阅历史
 

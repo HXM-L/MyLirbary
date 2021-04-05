@@ -24,5 +24,4 @@ public class FinRecordAction implements Action {
 		System.out.println("Í¼ÊéÃû:"+list.get(1).getBookName());
 		return "borrowRecord.jsp";
 	}
-
 }

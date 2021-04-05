@@ -15,13 +15,12 @@ import dbc.BaseDao;
 public class BorrrecordDaoImpl extends BaseDao implements BorrrecordDao {
 
 	@Override
-	public List<Borrrecord> findRecordByBorrowerId(String borrowerId) {
-		List<Borrrecord> lb = null;
+	public Borrrecord findRecordByBorrowerId(String borrowerId) {
 		List<Object> lp = new ArrayList<Object>();
-		String sql = "select * from borrrecord where borrowerId = ? and returnFlag = 1";
+		String sql = "select * from borrrecord where borrRecordId = ?";
 		lp.add(borrowerId);
-		lb = this.query(sql, lp, Borrrecord.class);
-		return lb;
+		Borrrecord record=(Borrrecord) this.query(sql, lp, Borrrecord.class).get(0);
+		return record;
 	}
 
 	@Override
