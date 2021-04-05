@@ -268,10 +268,16 @@ h1.userpagetitle {
 		/* document.getElementById("dialog").style.display="block"; */
 		console.log($("#dialog").html());
 	}
-	
+	<%String error = (String) request.getAttribute("updateFlag");%>
+	function error(){
+		var error = '<%=error%>';
+		if (error != "null") {
+			alert(error);
+		}
+	}
 </script>
 </head>
-<body onload="getDay('${id}','${User.name}','${User.password}')">
+<body onload="getDay('${id}','${User.name}','${User.password}'),error()">
 	<div id="header">
 		<div id="headertext">岭南师范学院图书馆书目检索系统</div>
 		<div>
@@ -288,8 +294,8 @@ h1.userpagetitle {
 			<li><a href="editBookType.jsp" class="select">图书分类管理</a></li>
 			<li><a href="borrowRecord.jsp" class="select"
 				onclick="searchRecord()">图书借阅信息</a></li>
-			<li><a href="returnInfo.jsp" class="select">图书归还信息</a></li>
-			<li><a href="admin.jsp" class="select">我的图书馆</a>
+			<li><a href="returnInfo.jsp" class="select">报表导出</a></li>
+			<li><a href="admin.jsp" class="select">购置图书</a>
 		</ul>
 	</div>
 	<div id="content" class="clearFix">
@@ -315,7 +321,8 @@ h1.userpagetitle {
 			<div id="UserMasterRight">
 				<h1 class="userpagetitle">图书借阅信息</h1>
 				<input type="button" value="查询" onclick="searchRecord()" /><br />
-				<table class="tb" cellpadding="7" border="1" width="1250px" cellspacing="0">
+				<table class="tb" cellpadding="7" border="1" width="1250px"
+					cellspacing="0">
 					<thead class="tbhead">
 						<tr>
 							<th>借阅记录号</th>
@@ -331,10 +338,10 @@ h1.userpagetitle {
 					</thead>
 					<tbody>
 						<%
-								Self self = new Self();
-								SelfDao selfdao = new SelfDaoImpl();
-								BookDao bookDao = new BookDaoImpl();
-							%>
+							Self self = new Self();
+							SelfDao selfdao = new SelfDaoImpl();
+							BookDao bookDao = new BookDaoImpl();
+						%>
 						<c:forEach var="e" items="${RecordList}">
 							<tr>
 								<td>${e.borrRecordId}</td>
@@ -345,14 +352,14 @@ h1.userpagetitle {
 								<td>${e.returnTime}</td>
 								<td>${e.aginBorr}</td>
 								<td>${e.overTime}</td>
-								<td>
-								<a href="ReturnDialog.do?AppointPage=UpRecord&rID=${e.borrRecordId}">修改</a>
-								<a href="">删除</a></td>
+								<td><a
+									href="ReturnDialog.do?AppointPage=UpRecord&rID=${e.borrRecordId}">修改</a>
+									<a href="">删除</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-				
+
 			</div>
 		</div>
 	</div>

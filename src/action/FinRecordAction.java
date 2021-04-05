@@ -15,6 +15,7 @@ public class FinRecordAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
+		//还书日期为空表示没有归还图书
 		HttpSession session=req.getSession();
 		BorrrecordDao bRecord=new BorrrecordDaoImpl();
 		List<Borrrecord> list=bRecord.findRecordByBorrower();

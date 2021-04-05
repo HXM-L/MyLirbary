@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@page import="java.util.List"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="dao.*"%>
+<%@page import="dao.impl.*"%>
+<%@page import="bean.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -217,13 +222,18 @@ h1.userpagetitle {
 		today += year + "年" + month + "月" + day + "日 星期" + arry[week];
 		/* document.getElementById("day").value = today; */
 		document.getElementById("day").innerHTML = today;
-		if(flag==true){
-			//alert("添加成功");
+	}
+	<%String error = (String) request.getAttribute("updateFlag");%>
+	function error(){
+		var error = '<%=error%>';
+		if (error != "null") {
+			alert(error);
 		}
 	}
 </script>
 </head>
-<body onload="getDay('${id}','${User.name}','${User.password}',${isFlag})">
+<body
+	onload="getDay('${id}','${User.name}','${User.password}',${isFlag}),error()">
 	<div id="header">
 		<div id="headertext">岭南师范学院图书馆书目检索系统</div>
 		<div>
@@ -240,8 +250,8 @@ h1.userpagetitle {
 			<li><a href="editBooks.jsp" class="select">图书管理</a></li>
 			<li><a href="editBookType.jsp" class="select">图书分类管理</a></li>
 			<li><a href="admin.jsp" class="select">图书借阅信息</a></li>
-			<li><a href="returnInfo.jsp" class="select">图书归还信息</a></li>
-			<li><a href="admin.jsp" class="select">我的图书馆</a>
+			<li><a href="returnInfo.jsp" class="select">报表导出</a></li>
+			<li><a href="admin.jsp" class="select">购置图书</a>
 		</ul>
 	</div>
 	<div id="content" class="clearFix">
@@ -269,15 +279,15 @@ h1.userpagetitle {
 					<h1 class="userpagetitle">添加图书信息</h1>
 					<div id="userInfoContent">
 						<div class="infoline">
-							<span class="infoleft">图书ID号:</span> 
-							<span class="inforight">
-								<input class="input" type="text" placeholder="请输入图书ID号" name="bookid" />
+							<span class="infoleft">图书ID号:</span> <span class="inforight">
+								<input class="input" type="text" placeholder="请输入图书ID号"
+								name="bookid" required="required"/>
 							</span>
 						</div>
 						<div class="infoline">
-							<span class="infoleft">图书名:</span> 
-							<span class="inforight">
-								<input class="input" type="text" placeholder="请输入图书名" name="bookName" />
+							<span class="infoleft">图书名:</span> <span class="inforight">
+								<input class="input" type="text" placeholder="请输入图书名"
+								name="bookName" required="required"/>
 							</span>
 						</div>
 						<div class="infoline">
@@ -285,8 +295,7 @@ h1.userpagetitle {
 								class="input" type="text" placeholder="请输入作者名" name="author" /></span>
 						</div>
 						<div class="infoline">
-							<span class="infoleft">出版社日期:</span> 
-							<span class="inforight"><input
+							<span class="infoleft">出版社日期:</span> <span class="inforight"><input
 								class="input" type="text" placeholder="出版日期" name="publishDate" /></span>
 						</div>
 						<div class="infoline">
@@ -297,11 +306,9 @@ h1.userpagetitle {
 							<span class="infoleft">图书类型：</span> <span class="inforight">
 								<select style="height: 38px" name="type">
 									<option>请选择</option>
-									<option>文学类</option>
-									<option>数理科学类</option>
-									<option>艺术类</option>
-									<option>经济类</option>
-									<option>军事类</option>
+									<c:forEach var="item" items="${typeList}">
+								       <option value="${item.typeId}">${item.name}</option>
+								    </c:forEach>
 							</select>
 							</span>
 						</div>
@@ -314,8 +321,7 @@ h1.userpagetitle {
 								class="input" type="text" placeholder="出版社" name="publish" /></span>
 						</div>
 						<div class="infoline">
-							<span class="infoleft"> 
-							<input type="submit" value="添加" /></span> 
+							<span class="infoleft"> <input type="submit" value="添加" /></span>
 							<span class="inforight"><input type="reset" value="取消" /></span>
 						</div>
 

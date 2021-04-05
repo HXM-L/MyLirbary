@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@page import="java.util.List"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="dao.*"%>
+<%@page import="dao.impl.*"%>
+<%@page import="bean.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -240,8 +245,8 @@ h1.userpagetitle
  		<li><a href="editBooks.jsp" class="select">图书管理</a></li>
  		<li><a href="editBookType.jsp" class="select">图书分类管理</a></li>
  		<li><a href="borrowRecord.jsp" class="select">图书借阅信息</a></li>
- 		<li><a href="returnInfo.jsp" class="select">图书归还信息</a></li> 		 
- 		<li><a href="admin.jsp" class="select">我的图书馆</a>			 
+ 		<li><a href="returnInfo.jsp" class="select">报表导出</a></li> 		 
+ 		<li><a href="admin.jsp" class="select">购置图书</a>			 
  	</ul> 
  </div>
  <div id="content" class="clearFix">
@@ -277,18 +282,18 @@ h1.userpagetitle
 			</div>
 		</div>	
 		<div id="UserMasterRight">
-			<form  action="" method="post">
+			<form  action="BookTypeAdd.do" method="post">
 				<h1 class="userpagetitle">添加图书类型信息</h1>
 				<div id="userInfoContent">
 					<div class="infoline">
 						<span class="infoleft">图书类型ID号</span>
 						<span class="inforight"> 
-						 <input class="input" type="text" placeholder="请输入图书类型ID号" name="typeid"/>
+						 <input type="text" placeholder="请输入图书类型ID号" name="typeid" required="required"/>
 						</span>
 					</div>
 					 
 					<div class="infoline"><span>图书类型名称</span>
-						<span class="inforight"><input class="input" type="text" placeholder="图书类型名称"  name="typename"/></span>
+						<span class="inforight"><input type="text" placeholder="图书类型名称"  name="typename" required="required"/></span>
 					</div>	 
 					<div class="infoline">
 						<span class="infoleft">

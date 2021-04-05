@@ -1,14 +1,19 @@
 package action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Admin;
+import bean.BookType;
 import bean.Borrower;
 import dao.AdminDao;
+import dao.BookTypeDao;
 import dao.BorrowerDao;
 import dao.impl.AdminDaoImpl;
+import dao.impl.BookTypeDaoImpl;
 import dao.impl.BorrowerDaoImpl;
 import framework.Action;
 
@@ -29,6 +34,10 @@ public class LoginAction implements Action {
 				session.setAttribute("UserType", "A");
 				session.setAttribute("id", admin.getId());
 				session.setAttribute("User", admin);
+				BookTypeDao typeDao=new BookTypeDaoImpl();
+				List<BookType> typeList=typeDao.findAllType();
+				System.out.println(typeList.get(0).getName());
+				session.setAttribute("typeList", typeList);
 				returnJsp= "admin.jsp";
 			}else {
 				req.setAttribute("str","用户名或密码错误!");

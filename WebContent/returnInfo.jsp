@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>我的图书馆</title>
+<title>报表导出</title>
 <style>
 #header {
 	width: 101%;
@@ -252,8 +252,8 @@ h1.userpagetitle {
 				<li><a href="editBookType.jsp" class="select">图书分类管理</a></li>
 				<li><a href="borrowRecord.jsp" class="select"
 					onclick="searchRecord()">图书借阅信息</a></li>
-				<li><a href="returnInfo.jsp" class="select">图书归还信息</a></li>
-				<li><a href="admin.jsp" class="select">我的图书馆</a>
+				<li><a href="returnInfo.jsp" class="select">报表导出</a></li>
+				<li><a href="admin.jsp" class="select">购置图书</a>
 			</ul>
 		</div>
 		<div id="content" class="clearFix">
@@ -277,44 +277,12 @@ h1.userpagetitle {
 					</div>
 				</div>
 				<div id="UserMasterRight">
-					<h1 class="userpagetitle">图书归还信息</h1>
-					<input type="button" value="查询" onclick="searchRecord()" /><br />
-					<table class="tb" cellpadding="7" border="1" width="1200px">
-						<thead class="tbhead">
-							<tr>
-								<th>图书ID号</th>
-								<th>图书名称</th>
-								<th>读者账号</th>
-								<th>借阅日期</th>
-								<th>还书日期</th>
-								<th>续借</th>
-								<th>超期</th>
-								<th>操作</th>
-							</tr>
-
-						</thead>
-						<tbody>
-						<%
-						Self self=new Self();
-						SelfDao selfdao=new SelfDaoImpl();
-						%>
-							<c:forEach var="e" items="${RecordList}">
-								<tr>
-									<td>${e.bookid}</td>
-									<td><%= selfdao.findBookBySelfId("01-02-A-05").getBookname()%></td>
-									<td>${e.borrowerId}</td>
-									<td>${e.borrTime}</td>
-									<td>${e.returnTime}</td>
-									<td>${e.aginBorr}</td>
-									<td>${e.overTime}</td>
-									<td>
-										<a href=" ">修改</a> 
-										<a href="">删除</a>
-									</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+					<h1 class="userpagetitle">报表导出</h1>
+					<ul>
+					<li>图书登记表</li>
+					<li>借阅情况表</li>
+					<li>注销登记表</li>
+					</ul>
 				</div>
 			</div>
 		</div>

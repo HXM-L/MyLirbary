@@ -22,4 +22,5 @@ public interface BorrrecordDao {
 	public boolean updateOverTimeByBorrowerId(String bid, String bookid);// 更新超期
 
 	public Borrrecord findBorrrecord(String bid, String bookid);// 定位一本书
+	public boolean updateRecordByRID(Borrrecord brecord);	//更新指定borrowerId的借阅记录
 }

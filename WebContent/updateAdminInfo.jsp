@@ -244,8 +244,8 @@ h1.userpagetitle {
 			<li><a href="editBooks.jsp" class="select">图书管理</a></li>
 			<li><a href="editBookType.jsp" class="select">图书分类管理</a></li>
 			<li><a href="borrowRecord.jsp" class="select">图书借阅信息</a></li>
-			<li><a href="admin.jsp" class="select">图书归还信息</a></li>
-			<li><a href="admin.jsp" class="select">我的图书馆</a>
+			<li><a href="admin.jsp" class="select">报表导出</a></li>
+			<li><a href="admin.jsp" class="select">购置图书</a>
 		</ul>
 	</div>
 	<div id="content" class="clearFix">

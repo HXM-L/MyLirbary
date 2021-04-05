@@ -14,13 +14,18 @@ public class BookTypeDaoImpl extends BaseDao implements BookTypeDao {
 		List<Object> lp = new ArrayList<Object>();
 		List<BookType> lb =null;
 		BookType bt = null;
-		String sql = "select * where name = ";
+		String sql = "select * from booktype where name = ?";
 		lp.add(name);
 		lb = this.query(sql, lp, BookType.class);
 		if(lb.size()>0) {
 			bt = lb.get(0);
 		}
 		return bt;
+	}
+
+	@Override
+	public List<BookType> findAllType() {
+		return this.query("select * from booktype",new ArrayList<Object>(),BookType.class);
 	}
 
 }

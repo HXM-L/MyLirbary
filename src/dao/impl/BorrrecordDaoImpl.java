@@ -142,4 +142,20 @@ public class BorrrecordDaoImpl extends BaseDao implements BorrrecordDao {
 		lb = this.query(sql, lp, Borrrecord.class);
 		return lb;
 	}
+
+	@Override
+	public boolean updateRecordByRID(Borrrecord brecord) {
+		List<Object> lp = new ArrayList<Object>();
+		String sql = "update borrrecord set borrowerId = ?,returnFlag=?,bookid=?,borrTime=?,returnTime=?,aginBorr=?,overTime=?,bookName=? where borrRecordId = ?";
+		lp.add(brecord.getBorrowerId());
+		lp.add(brecord.getReturnFlag());
+		lp.add(brecord.getBookid());
+		lp.add(brecord.getBorrTime());
+		lp.add(brecord.getReturnTime());
+		lp.add(brecord.getAginBorr());
+		lp.add(brecord.getOverTime());
+		lp.add(brecord.getBookName());
+		lp.add(brecord.getBorrRecordId());
+		return this.upadte(sql, lp);
+	}
 }

@@ -20,7 +20,6 @@ public class BookAddAction implements Action {
 		session.setAttribute("isFlag", false);
 		Self self=new Self();
 		try {
-			int typeid=1;
 			String bookid=req.getParameter("bookid");
 			String type = new String(req.getParameter("type").getBytes("iso-8859-1"), "utf-8");
 			String bookName = new String(req.getParameter("bookName").getBytes("iso-8859-1"), "utf-8");
@@ -36,25 +35,14 @@ public class BookAddAction implements Action {
 			self.setAuthor(author);
 			self.setPublisherDate(pubDate);
 			self.setBookNum(num);
-			if(type.equals("文学类")) {
-				typeid=1;
-			}else if(type.equals("数理科学类")) {
-				typeid=2;
-			}else if(type.equals("艺术类")) {
-				typeid=3;
-			}else if(type.equals("经济类")) {
-				typeid=4;
-			}else if(type.equals("军事类")) {
-				typeid=5;
-			}
-			self.setTypeId(typeid);
+			self.setTypeId(Integer.parseInt(type));
 			self.setPicture(picture);
 			self.setIntroduction(introd);
 			self.setPublisher(publisher);
 			if(selfDao.doSelf(self)) {
-				session.setAttribute("isFlag", true);
+				req.setAttribute("updateFlag", "添加成功");
 			}else {
-				
+				req.setAttribute("updateFlag", "添加失败");
 			}
 			System.out.println(bookName);
 			System.out.println(type);
