@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>借阅记录</title>
+<title>修改借阅记录</title>
 <style>
 #header {
 	width: 101%;
@@ -224,6 +224,25 @@ h1.userpagetitle {
 	top: 150px;
 	border: 2px;
 }
+
+table>tbody tr>td {
+	margin: 0px auto;
+	padding: 2px 0px 2px 2px;
+}
+
+table>tbody tr>td>input {
+	width: 160px;
+	height: 20px;
+}
+
+.inputFlag {
+	width: 50px;
+}
+input[type=submit],input[type=button]{
+	width: 40px;
+	text-align: center;
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+}
 </style>
 <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -232,9 +251,6 @@ h1.userpagetitle {
 	var userPwd = "";
 	function exit() {
 		location.href = "exit.do";
-	}
-	function searchRecord() {
-		location.href = "finRecord.do"
 	}
 	function getDay(id, name, pwd) {
 		userID = id;
@@ -254,21 +270,6 @@ h1.userpagetitle {
 		document.getElementById("day").value = today;
 		document.getElementById("day").innerHTML = today;
 	}
-	
-	function showDialog(a){
-		/* alert("ID="+a); */
-		$("#dialog").css("display","block");
-		/* document.getElementById("dialog").style.display="block"; */
-		console.log($("#dialog").html());
-		console.log(a);
-	}
-	function sure(){
-		/* alert("ID="+a); */
-		$("#dialog").css("display","none");
-		/* document.getElementById("dialog").style.display="block"; */
-		console.log($("#dialog").html());
-	}
-	
 </script>
 </head>
 <body onload="getDay('${id}','${User.name}','${User.password}')">
@@ -313,46 +314,46 @@ h1.userpagetitle {
 				</div>
 			</div>
 			<div id="UserMasterRight">
-				<h1 class="userpagetitle">图书借阅信息</h1>
-				<input type="button" value="查询" onclick="searchRecord()" /><br />
-				<table class="tb" cellpadding="7" border="1" width="1250px" cellspacing="0">
-					<thead class="tbhead">
-						<tr>
-							<th>借阅记录号</th>
-							<th>图书ID号</th>
-							<th>图书名称</th>
-							<th>读者账号</th>
-							<th>借阅日期</th>
-							<th>还书日期</th>
-							<th>续借</th>
-							<th>超期</th>
-							<th>操作</th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-								Self self = new Self();
-								SelfDao selfdao = new SelfDaoImpl();
-								BookDao bookDao = new BookDaoImpl();
-							%>
-						<c:forEach var="e" items="${RecordList}">
+				<h1 class="userpagetitle">修改借阅记录</h1>
+				<form action="UpdateRecord.do" method="post">
+					<table cellpadding="" border="1" width="1300px" cellspacing="0">
+						<thead class="tbhead">
 							<tr>
-								<td>${e.borrRecordId}</td>
-								<td>${e.bookid}</td>
-								<td>${e.bookName}</td>
-								<td>${e.borrowerId}</td>
-								<td>${e.borrTime}</td>
-								<td>${e.returnTime}</td>
-								<td>${e.aginBorr}</td>
-								<td>${e.overTime}</td>
-								<td>
-								<a href="ReturnDialog.do?AppointPage=UpRecord&rID=${e.borrRecordId}">修改</a>
-								<a href="">删除</a></td>
+								<th>借阅记录号</th>
+								<th>图书ID号</th>
+								<th>图书名称</th>
+								<th>读者账号</th>
+								<th>借阅日期</th>
+								<th>还书日期</th>
+								<th>续借</th>
+								<th>超期</th>
+								<th>操作</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				
+						</thead>
+						<tbody>
+							<tr>
+								<td><input type="text" name="recordID"
+									value="${recoed.borrRecordId}" autofocus="autofocus" /></td>
+								<td><input type="text" name="bookID"
+									value="${recoed.bookid}" /></td>
+								<td><input type="text" name="bookName"
+									value="${recoed.bookName}" /></td>
+								<td><input type="text" name="borrowerId"
+									value="${recoed.borrowerId}" /></td>
+								<td><input type="text" name="borrTime"
+									value="${recoed.borrTime}" /></td>
+								<td><input type="text" name="returnTime"
+									value="${recoed.returnTime}" /></td>
+								<td><input type="text" name="aginBorr" class="inputFlag"
+									value="${recoed.aginBorr}" /></td>
+								<td><input type="text" name="overTime" class="inputFlag"
+									value="${recoed.overTime}" /></td>
+								<td><input type="submit" value="确定"/>
+								<a href="borrowRecord.jsp"><input type="button" value="取消" /></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
 			</div>
 		</div>
 	</div>

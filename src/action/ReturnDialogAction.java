@@ -20,8 +20,8 @@ public class ReturnDialogAction implements Action {
 			brecord=brecordDao.findRecordByBorrowerId(req.getParameter("rID"));
 			System.out.println(brecord.getBookName());
 			req.getSession().setAttribute("recoed", brecord);
-			req.setAttribute("UFlag", true);
-			pageURL= "borrowRecord.jsp";
+			req.setAttribute("UFlag", "true");
+			pageURL= "upbRecord.jsp";
 		}
 		return pageURL;
 	}
