@@ -1,7 +1,7 @@
 package bean;
 
 public class BookType {	//图书类型表
-	private int typeId;	//图书类型id
+	private int typeId;	//图书类型id(改了数据表的tyteID）
 	private String name;	//类型名称
 	public BookType() {
 		super();
