@@ -28,4 +28,13 @@ public class BookTypeDaoImpl extends BaseDao implements BookTypeDao {
 		return this.query("select * from booktype",new ArrayList<Object>(),BookType.class);
 	}
 
+	@Override
+	public boolean doBookType(BookType bookType) {
+		String sql="insert into bookType values(?,?)";
+		List<Object> lp=new ArrayList<Object>();
+		lp.add(bookType.getTypeId());
+		lp.add(bookType.getName());
+		return this.upadte(sql, lp);
+	}
+
 }

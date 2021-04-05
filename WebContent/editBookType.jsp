@@ -221,9 +221,16 @@ h1.userpagetitle
 		document.getElementById("day").innerHTML = today;
 		
 	}
+	<%String error = (String) request.getAttribute("updateFlag");%>
+	function error(){
+		var error = '<%=error%>';
+		if (error != "null") {
+			alert(error);
+		}
+	}
 </script>
 </head>
-<body onload="getDay('${id}','${User.name}','${User.password}')">
+<body onload="getDay('${id}','${User.name}','${User.password}'),error()">
 <div id="header">
 <div id="headertext">
 岭南师范学院图书馆书目检索系统
@@ -288,7 +295,7 @@ h1.userpagetitle
 					<div class="infoline">
 						<span class="infoleft">图书类型ID号</span>
 						<span class="inforight"> 
-						 <input type="text" placeholder="请输入图书类型ID号" name="typeid" required="required"/>
+						 <input type="text" placeholder="请输入图书类型ID号" name="typeid" required="required" autofocus="autofocus"/>
 						</span>
 					</div>
 					 

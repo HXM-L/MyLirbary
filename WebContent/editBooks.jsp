@@ -281,7 +281,7 @@ h1.userpagetitle {
 						<div class="infoline">
 							<span class="infoleft">图书ID号:</span> <span class="inforight">
 								<input class="input" type="text" placeholder="请输入图书ID号"
-								name="bookid" required="required"/>
+								name="bookid" required="required" autofocus="autofocus"/>
 							</span>
 						</div>
 						<div class="infoline">
