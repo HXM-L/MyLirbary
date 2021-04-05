@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>我的图书馆</title>
+<title>图书分类</title>
 <style>
 #header {
 	width: 101%;
@@ -253,7 +253,7 @@ h1.userpagetitle
  		<li><a href="editBookType.jsp" class="select">图书分类管理</a></li>
  		<li><a href="borrowRecord.jsp" class="select">图书借阅信息</a></li>
  		<li><a href="returnInfo.jsp" class="select">报表导出</a></li> 		 
- 		<li><a href="admin.jsp" class="select">购置图书</a>			 
+ 		<li><a href="buyBook.jsp" class="select">购置图书</a>			 
  	</ul> 
  </div>
  <div id="content" class="clearFix">
@@ -266,7 +266,7 @@ h1.userpagetitle
 							<a class="select" href="admin.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
 						</li>
 						<li>
-							<a class="select" href="updatePassword.jsp">修改密码</a>
+							<a class="select" href="updatePwd.jsp">修改密码</a>
 						</li>						 
 						 					 
 						<li>

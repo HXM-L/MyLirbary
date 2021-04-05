@@ -234,7 +234,7 @@ h1.userpagetitle {
 		location.href = "exit.do";
 	}
 	function searchRecord() {
-		location.href = "finRecord.do"
+		location.href = "finRecord.do?findURL=borrowRecord.jsp";
 	}
 	function getDay(id, name, pwd) {
 		userID = id;
@@ -262,12 +262,6 @@ h1.userpagetitle {
 		console.log($("#dialog").html());
 		console.log(a);
 	}
-	function sure(){
-		/* alert("ID="+a); */
-		$("#dialog").css("display","none");
-		/* document.getElementById("dialog").style.display="block"; */
-		console.log($("#dialog").html());
-	}
 	<%String error = (String) request.getAttribute("updateFlag");%>
 	function error(){
 		var error = '<%=error%>';
@@ -275,9 +269,20 @@ h1.userpagetitle {
 			alert(error);
 		}
 	}
+	function openResult() { /* 删除按钮 */
+		var r = confirm("您确定要删除该记录吗？")
+		if (r == true) {
+			console.log("确定");
+			location.href = "Delete.do";
+		} else {
+			console.log("取消");
+			location.href = "login.jsp";
+		}
+	}
+	
 </script>
 </head>
-<body onload="getDay('${id}','${User.name}','${User.password}'),error()">
+<body onload="getDay('${id}','${User.name}','${User.password}',${isFlag}),error()">
 	<div id="header">
 		<div id="headertext">岭南师范学院图书馆书目检索系统</div>
 		<div>
@@ -295,7 +300,7 @@ h1.userpagetitle {
 			<li><a href="borrowRecord.jsp" class="select"
 				onclick="searchRecord()">图书借阅信息</a></li>
 			<li><a href="returnInfo.jsp" class="select">报表导出</a></li>
-			<li><a href="admin.jsp" class="select">购置图书</a>
+			<li><a href="buyBook.jsp" class="select">购置图书</a>
 		</ul>
 	</div>
 	<div id="content" class="clearFix">
@@ -307,7 +312,7 @@ h1.userpagetitle {
 						<ul style="list-style-type: none">
 							<li><a class="select" href="admin.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
 							</li>
-							<li><a class="select" href="updatePassword.jsp">修改密码</a></li>
+							<li><a class="select" href="updatePwd.jsp">修改密码</a></li>
 							<li><a class="select" href="orderhistory.jsp">预约图书信息</a></li>
 							<li><a class="select" href="borrowing.jsp">当前借阅情况和续借</a></li>
 							<li><a class="select" href="urgeReturn.jsp">催还图书信息</a></li>
@@ -352,14 +357,14 @@ h1.userpagetitle {
 								<td>${e.returnTime}</td>
 								<td>${e.aginBorr}</td>
 								<td>${e.overTime}</td>
-								<td><a
-									href="ReturnDialog.do?AppointPage=UpRecord&rID=${e.borrRecordId}">修改</a>
-									<a href="">删除</a></td>
+								<td>
+								<a href="ReturnDialog.do?AppointPage=UpRecord&rID=${e.borrRecordId}"><input type="button" value="修改"/></a>
+								<a href="Delete.do?AppointPage=UpRecord&rID=${e.borrRecordId}"><input type="button" value="删除" onclick="openResult()" /></a>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-
 			</div>
 		</div>
 	</div>

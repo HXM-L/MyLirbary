@@ -158,4 +158,12 @@ public class BorrrecordDaoImpl extends BaseDao implements BorrrecordDao {
 		lp.add(brecord.getBorrRecordId());
 		return this.upadte(sql, lp);
 	}
+
+	@Override
+	public boolean deleteRecord(String recordID) {
+		List<Object> lp = new ArrayList<Object>();
+		String sql = "delete from borrrecord where borrRecordId = ?";
+		lp.add(recordID);
+		return this.upadte(sql, lp);
+	}
 }

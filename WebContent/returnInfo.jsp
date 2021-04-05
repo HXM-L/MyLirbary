@@ -253,7 +253,7 @@ h1.userpagetitle {
 				<li><a href="borrowRecord.jsp" class="select"
 					onclick="searchRecord()">图书借阅信息</a></li>
 				<li><a href="returnInfo.jsp" class="select">报表导出</a></li>
-				<li><a href="admin.jsp" class="select">购置图书</a>
+				<li><a href="buyBook.jsp" class="select">购置图书</a>
 			</ul>
 		</div>
 		<div id="content" class="clearFix">
@@ -265,7 +265,7 @@ h1.userpagetitle {
 							<ul style="list-style-type: none">
 								<li><a class="select" href="admin.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
 								</li>
-								<li><a class="select" href="updatePassword.jsp">修改密码</a></li>
+								<li><a class="select" href="updatePwd.jsp">修改密码</a></li>
 								<li><a class="select" href="orderhistory.jsp">预约图书信息</a></li>
 								<li><a class="select" href="borrowing.jsp">当前借阅情况和续借</a></li>
 								<li><a class="select" href="urgeReturn.jsp">催还图书信息</a></li>

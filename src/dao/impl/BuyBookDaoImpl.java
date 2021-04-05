@@ -3,6 +3,7 @@ package dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.BookType;
 import bean.BuyBook;
 import dao.BuyBookDao;
 import dbc.BaseDao;
@@ -40,6 +41,11 @@ public class BuyBookDaoImpl extends BaseDao implements BuyBookDao {
 		List<Object> lp=new ArrayList<Object>();
 		lp.add(buyBookId);
 		return this.upadte(sql, lp);
+	}
+
+	@Override
+	public List<BuyBook> findAllBuyBook() {
+		return this.query("select * from buybook",new ArrayList<Object>(),BuyBook.class);
 	}
 
 }

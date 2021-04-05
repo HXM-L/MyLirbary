@@ -75,9 +75,16 @@
 			alert(str);
 		}
 	}
+	<%String error = (String) request.getAttribute("updateFlag");%>
+	function error(){
+		var error = '<%=error%>';
+		if (error != "null") {
+			alert(error);
+		}
+	}
 </script>
 </head>
-<body>
+<body onload="error()">
 	<center>
 		<div>
 			<p style="padding: 5px 0; font-weight: 700; font-size: 16px;">SSO services authentication</p>
@@ -96,7 +103,7 @@
 				</div>
 				<div>
 					<p class="label">选择身份 <br /> 
-					<input type="radio" name="status" value="1" />管理员 
+					<input type="radio" name="status" value="1" checked="checked"/>管理员 
 					<input type="radio" name="status" value="2" />学生 
 					<input type="radio" name="status" value="3" />教师 
 					<input type="radio" name="status" value="4" />校外人员

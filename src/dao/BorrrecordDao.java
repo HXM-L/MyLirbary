@@ -8,7 +8,7 @@ import bean.Reserve;
 public interface BorrrecordDao {
 
 	public Borrrecord findRecordByBorrowerId(String borrowerId);// 查询指定记录id的借阅历史
-	
+
 	public List<Borrrecord> findRecordByBorrower();// 查询所有借阅历史
 
 	public List<Borrrecord> findNowRecordByBorrowerId(String borrowerId);// 查询的当前的借阅
@@ -22,5 +22,8 @@ public interface BorrrecordDao {
 	public boolean updateOverTimeByBorrowerId(String bid, String bookid);// 更新超期
 
 	public Borrrecord findBorrrecord(String bid, String bookid);// 定位一本书
-	public boolean updateRecordByRID(Borrrecord brecord);	//更新指定borrowerId的借阅记录
+
+	public boolean updateRecordByRID(Borrrecord brecord); // 更新指定borrowerId的借阅记录
+	
+	public boolean deleteRecord(String recordID);	//删除一条记录
 }

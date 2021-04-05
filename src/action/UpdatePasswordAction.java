@@ -15,19 +15,26 @@ public class UpdatePasswordAction implements Action {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
 		String newPwd = req.getParameter("npwd");
+		String URL=null;
 		if(req.getSession().getAttribute("UserType").equals("A")) {
 			Admin admin=(Admin)req.getSession().getAttribute(("User"));
 			System.out.println(admin.getId());
 			System.out.println(admin.getName());
 			System.out.println(newPwd);
 			System.out.println(req.getSession().getAttribute("UserType"));
-			bdao.updateBorrower(admin.getId()+"", admin.getName(),newPwd);
+			if(bdao.updateBorrower(admin.getId()+"", admin.getName(),newPwd)) {
+				req.setAttribute("updateFlag", "–ﬁ∏ƒ√‹¬Î≥…π¶");
+				URL="login.jsp";
+			}else {
+				req.setAttribute("updateFlag", "–ﬁ∏ƒ√‹¬Î ß∞‹");
+				URL="updatePwd.jsp";
+			}
 		}else {
 			Borrower borrower=(Borrower) req.getSession().getAttribute(("User"));
 			bdao.updateBorrower(borrower.getBorrowerId(), borrower.getName(),newPwd);
 		}
 		
-		return "login.jsp";
+		return URL;
 	}
 
 }
