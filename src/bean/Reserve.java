@@ -7,6 +7,7 @@ public class Reserve { // 预定表
 	private String reserveTime; // 预定时间
 	private String fetchTime; // 取书时间
 	private String status; // 取书状态
+	private String bookName;//图书名
 
 	public Reserve() {
 		super();
@@ -31,11 +32,11 @@ public class Reserve { // 预定表
 		this.status = status;
 	}
 
-	public String getreserveid() {
+	public String getReserveid() {
 		return reserveid;
 	}
 
-	public void setreserveid(String reserveid) {
+	public void setReserveid(String reserveid) {
 		this.reserveid = reserveid;
 	}
 
@@ -47,11 +48,11 @@ public class Reserve { // 预定表
 		this.bookid = bookid;
 	}
 
-	public String getborowerId() {
+	public String getBorowerId() {
 		return borowerId;
 	}
 
-	public void setborowerId(String borowerId) {
+	public void setBorowerId(String borowerId) {
 		this.borowerId = borowerId;
 	}
 
@@ -79,4 +80,12 @@ public class Reserve { // 预定表
 		this.status = status;
 	}
 
+	public String getBookName() {
+		return bookName;
+	}
+
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+	
 }

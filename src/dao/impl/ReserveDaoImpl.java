@@ -13,12 +13,13 @@ public class ReserveDaoImpl extends BaseDao implements ReserveDao {
 	public boolean doReserve(Reserve r) {
 		boolean isFlag = false;
 		List<Object> lp =new ArrayList<Object>();
-		String sql ="insert into reserve values(?,?,?,?,?)";
+		String sql ="insert into reserve values(?,?,?,?,?,?)";
 		lp.add(r.getBookid());
-		lp.add(r.getborowerId());
+		lp.add(r.getBorowerId());
 		lp.add(r.getReserveTime());
 		lp.add(r.getFetchTime());
 		lp.add(r.getStatus());
+		lp.add(r.getBookName());
 		isFlag = this.upadte(sql, lp);
 		return isFlag;
 	}

@@ -269,20 +269,24 @@ h1.userpagetitle {
 			alert(error);
 		}
 	}
-	function openResult() { /* 删除按钮 */
+	function Delete(Rid) { /* 删除按钮 */
 		var r = confirm("您确定要删除该记录吗？")
 		if (r == true) {
 			console.log("确定");
-			location.href = "Delete.do";
+			location.href = "Delete.do?AppointPage=UpRecord&rID="+Rid;
 		} else {
 			console.log("取消");
-			location.href = "login.jsp";
+			location.href = "borrowRecord.jsp";
 		}
+	}
+	function Modify(Rid) { /* 删除按钮 */
+		location.href = "ReturnDialog.do?AppointPage=UpRecord&rID="+Rid;
 	}
 	
 </script>
 </head>
-<body onload="getDay('${id}','${User.name}','${User.password}',${isFlag}),error()">
+<body
+	onload="getDay('${id}','${User.name}','${User.password}',${isFlag}),error()">
 	<div id="header">
 		<div id="headertext">岭南师范学院图书馆书目检索系统</div>
 		<div>
@@ -358,8 +362,8 @@ h1.userpagetitle {
 								<td>${e.aginBorr}</td>
 								<td>${e.overTime}</td>
 								<td>
-								<a href="ReturnDialog.do?AppointPage=UpRecord&rID=${e.borrRecordId}"><input type="button" value="修改"/></a>
-								<a href="Delete.do?AppointPage=UpRecord&rID=${e.borrRecordId}"><input type="button" value="删除" onclick="openResult()" /></a>
+									<input type="button" value="修改" onclick="Modify(${e.borrRecordId})" /> 
+									<input type="button" value="删除" onclick="Delete(${e.borrRecordId})" />
 								</td>
 							</tr>
 						</c:forEach>

@@ -20,6 +20,7 @@ public class log {
 	
 	/*
 	 * 有变更:数据表bookType的tyteID改为typeID
+	 * Reserve.java添加bookName属性
 	 * 
 	 * */
 }

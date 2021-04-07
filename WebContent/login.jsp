@@ -93,12 +93,12 @@
 			<form action="login.do" method="post" onsubmit="return checkLog()">
 				<div class="formitem">
 					<p class="label"> 账户 <br /> 
-					<input class="input" type="text" id="name" placeholder="请输入借书证号" name="username" />
+					<input class="input" type="text" id="name" placeholder="请输入借书证号" name="username" required="required"/>
 					</p>
 				</div>
 				<div>
 					<p class="label">密码 <br /> 
-					<input class="input" type="password" id="pwd" placeholder="请输入密码" name="password" />
+					<input class="input" type="password" id="pwd" placeholder="请输入密码" name="password" required="required"/>
 					</p>
 				</div>
 				<div>
