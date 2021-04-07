@@ -20,7 +20,7 @@ import dao.impl.BorrowerDaoImpl;
 import dao.impl.BuyBookDaoImpl;
 import framework.Action;
 
-public class LoginAction implements Action {
+public class LoginAction implements Action {	//µÇÂ¼²Ù×÷
 
 	AdminDao adminDao=new AdminDaoImpl();
 	BorrowerDao borrDao=new BorrowerDaoImpl();

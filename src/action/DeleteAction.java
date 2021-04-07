@@ -8,7 +8,7 @@ import dao.BorrrecordDao;
 import dao.impl.BorrrecordDaoImpl;
 import framework.Action;
 
-public class DeleteAction implements Action {
+public class DeleteAction implements Action {//ËùÓÐÉ¾³ý²Ù×÷
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {

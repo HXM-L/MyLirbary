@@ -14,7 +14,7 @@ import dao.impl.BorrrecordDaoImpl;
 import dao.impl.BuyBookDaoImpl;
 import framework.Action;
 
-public class FinRecordAction implements Action {
+public class FinRecordAction implements Action {	//查找所有记录
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {

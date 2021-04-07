@@ -255,13 +255,6 @@ h1.userpagetitle {
 		document.getElementById("day").innerHTML = today;
 	}
 	
-	function showDialog(a){
-		/* alert("ID="+a); */
-		$("#dialog").css("display","block");
-		/* document.getElementById("dialog").style.display="block"; */
-		console.log($("#dialog").html());
-		console.log(a);
-	}
 	<%String error = (String) request.getAttribute("updateFlag");%>
 	function error(){
 		var error = '<%=error%>';
@@ -279,7 +272,7 @@ h1.userpagetitle {
 			location.href = "borrowRecord.jsp";
 		}
 	}
-	function Modify(Rid) { /* 删除按钮 */
+	function Modify(Rid) { /* 修改按钮 */
 		location.href = "ReturnDialog.do?AppointPage=UpRecord&rID="+Rid;
 	}
 	

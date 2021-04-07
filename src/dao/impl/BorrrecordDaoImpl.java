@@ -57,7 +57,7 @@ public class BorrrecordDaoImpl extends BaseDao implements BorrrecordDao {
 				String returnTime = ft.format(rTime);//默认还书三个月
 				String sql = "insert into borrrecord values(?,?,?,?,?,?,?,?)";
 				lp.add(borrrecordid);
-				lp.add(r.getborowerId());
+				lp.add(r.getBorowerId());
 				lp.add(returnFlag);
 				lp.add(r.getBookid());
 				lp.add(borrTime);

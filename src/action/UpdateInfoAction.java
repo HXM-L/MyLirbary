@@ -11,7 +11,7 @@ import dao.AdminDao;
 import dao.impl.AdminDaoImpl;
 import framework.Action;
 
-public class UpdateInfoAction implements Action {
+public class UpdateInfoAction implements Action {	//修改信息
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) { // 更新用户信息

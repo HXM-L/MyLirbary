@@ -8,7 +8,7 @@ import dao.BorrowerDao;
 import dao.impl.BorrowerDaoImpl;
 import framework.Action;
 
-public class PersonalInfoAction implements Action {
+public class PersonalInfoAction implements Action {	//ÐÞ¸ÄÐÅÏ¢
 
 	BorrowerDao bdao = new BorrowerDaoImpl();
 	@Override

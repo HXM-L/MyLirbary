@@ -13,7 +13,7 @@ import dao.impl.AdminDaoImpl;
 import dao.impl.BorrrecordDaoImpl;
 import framework.Action;
 
-public class UpdateRecordAction implements Action {
+public class UpdateRecordAction implements Action {	//更新借阅记录
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) { // 更新借阅记录

@@ -340,7 +340,7 @@ h1.userpagetitle {
 							<th>读者账号</th>
 							<th>预定日期</th>
 							<th>取书日期</th>
-							<th>超期</th>
+							<th>取书状态</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -358,7 +358,6 @@ h1.userpagetitle {
 								<td>${e.borrowerId}</td>
 								<td>${e.borrTime}</td>
 								<td>${e.returnTime}</td>
-								<td>${e.aginBorr}</td>
 								<td>${e.overTime}</td>
 								<td>
 									<input type="button" value="修改" onclick="Modify(${e.borrRecordId})" /> 

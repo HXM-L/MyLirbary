@@ -20,11 +20,9 @@
 	margin-left: -7px;
 	margin-top: -7px;
 }
-
 .clearFix: {
 	display: inline-block;
 }
-
 #headertext {
 	height: 50px;
 	text-align: left;
@@ -35,19 +33,16 @@
 	padding-left: 5px;
 	font-family: 楷体_GB2312
 }
-
 .fr {
 	float: right;
 	margin-right: -65px;
 	margin-top: 9px;
 	width: 20%;
 }
-
 .redlink {
 	color: #ff0000;
 	text-decoration: none;
 }
-
 #headermenu {
 	height: 25px;
 	text-align: right;
@@ -55,7 +50,6 @@
 	padding-right: 20px;
 	float: right;
 }
-
 #pagemenu {
 	height: 30px;
 	line-height: 30px;
@@ -64,7 +58,6 @@
 	padding-left: 30px;
 	font-size: 13px
 }
-
 #search {
 	width: 101%;
 	overflow: hidden;
@@ -74,7 +67,6 @@
 	margin-top: -7px;
 	overflow: hidden;
 }
-
 .select {
 	font-size: 13px;
 	color: #000000;
@@ -82,25 +74,20 @@
 	float: left;
 	margin-left: 20px
 }
-
 .demo {
 	background: rgba(255, 255, 255, 0.1);
 }
-
 a:hover {
 	color: blue;
 }
-
 .Notice {
 	color: #000;
 	line-height: 30px;
 }
-
 .unlogin {
 	color: red;
 	text-decoration: none;
 }
-
 #UserMaster {
 	min-height: 450px;
 	height: auto;
@@ -108,11 +95,9 @@ a:hover {
 	width: 100%;
 	float: left;
 }
-
 .clearFix {
 	display: block;
 }
-
 #UserMasterLeft {
 	min-width: 160px;
 	width: 160px;
@@ -127,7 +112,6 @@ a:hover {
 	color: #333;
 	margin-left: -8px;
 }
-
 #UserMasterLeft .userinfo {
 	border-bottom: 2px solid #ddd;
 	display: block;
@@ -137,7 +121,6 @@ a:hover {
 	font-weight: 500;
 	height: 32px;
 }
-
 #userpagemenu {
 	width: 220px !important;
 	line-height: 80px;
@@ -148,7 +131,6 @@ a:hover {
 	height: 100%;
 	margin-left: -70px;
 }
-
 .select {
 	font-size: 16px;
 	color: #000000;
@@ -156,19 +138,16 @@ a:hover {
 	float: left;
 	margin-left: 20px
 }
-
 #content {
 	min-height: 500px;
 	height: auto;
 	text-align: left;
 }
-
 #UserMasterRight {
 	width: 1200px;
 	float: left;
 	padding: 10px;
 }
-
 h1.userpagetitle {
 	font-size: 14px;
 	padding-bottom: 12px;
@@ -180,29 +159,23 @@ h1.userpagetitle {
 	height: 16px;
 	border-bottom: 1px solid #ddd;
 }
-
 #userInfoContent {
 	margin-left: 10px;
 }
-
 #userInfoContent .infoline {
 	text-align: left;
 	margin-bottom: 20px;
 	margin-left: 60px;
 }
-
 #userInfoContent .infoline .infoleft {
 	width: 30%;
 }
-
 #userInfoContent .infoline .inforight {
 	margin-left: 15px;
 }
-
 .tbhead {
 	text-align: center;
 }
-
 #dialog {
 	clear: both;
 	position: relative;
@@ -214,7 +187,6 @@ h1.userpagetitle {
 	z-index: 5;
 	display: block;
 }
-
 #dialog>div {
 	position: absolute;
 	width: 1200px;
@@ -224,17 +196,14 @@ h1.userpagetitle {
 	top: 150px;
 	border: 2px;
 }
-
 table>tbody tr>td {
 	margin: 0px auto;
 	padding: 2px 0px 2px 2px;
 }
-
 table>tbody tr>td>input {
 	width: 160px;
 	height: 20px;
 }
-
 .inputFlag {
 	width: 50px;
 }
