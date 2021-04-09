@@ -234,7 +234,7 @@ h1.userpagetitle {
 		location.href = "exit.do";
 	}
 	function searchRecord() {
-		location.href = "finRecord.do?findURL=borrowRecord.jsp";
+		location.href = "finRecord.do?findURL=orderhistory.jsp";
 	}
 	function getDay(id, name, pwd) {
 		userID = id;
