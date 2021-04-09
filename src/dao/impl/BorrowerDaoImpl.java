@@ -11,8 +11,7 @@ public class BorrowerDaoImpl extends BaseDao implements BorrowerDao {
 
 	@Override
 	public Borrower findBorrower(String borrowerId, String password, int type) {
-		return (Borrower) this.query("select * from borrower where borrowerId=" + borrowerId + "and password="
-				+ password + "and identityId=" + type, new ArrayList<Object>(), Borrower.class).get(0);
+		return (Borrower) this.query("select * from borrower where borrowerId=" + borrowerId + "and password="+ password + "and identityId=" + type, new ArrayList<Object>(), Borrower.class).get(0);
 	}
 
 	@Override

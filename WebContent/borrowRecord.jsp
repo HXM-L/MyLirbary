@@ -339,11 +339,6 @@ h1.userpagetitle {
 						</tr>
 					</thead>
 					<tbody>
-						<%
-							Self self = new Self();
-							SelfDao selfdao = new SelfDaoImpl();
-							BookDao bookDao = new BookDaoImpl();
-						%>
 						<c:forEach var="e" items="${RecordList}">
 							<tr>
 								<td>${e.borrRecordId}</td>

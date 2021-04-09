@@ -1,7 +1,7 @@
 package bean;
 
 public class Reserve { // 预定表
-	private String reserveid; // 预定表记录id
+	private int reserveid; // 预定表记录id
 	private String bookid; // 图书id
 	private String borowerId; // 借阅人id
 	private String reserveTime; // 预定时间
@@ -22,7 +22,7 @@ public class Reserve { // 预定表
 		this.status = status;
 	}
 
-	public Reserve(String reserveid, String bookid, String borowerId, String reserveTime, String fetchTime, String status) {
+	public Reserve(int reserveid, String bookid, String borowerId, String reserveTime, String fetchTime, String status) {
 		super();
 		this.reserveid = reserveid;
 		this.bookid = bookid;
@@ -32,11 +32,11 @@ public class Reserve { // 预定表
 		this.status = status;
 	}
 
-	public String getReserveid() {
+	public int getReserveid() {
 		return reserveid;
 	}
 
-	public void setReserveid(String reserveid) {
+	public void setReserveid(int reserveid) {
 		this.reserveid = reserveid;
 	}
 

@@ -34,4 +34,36 @@ public class ReserveDaoImpl extends BaseDao implements ReserveDao {
 		return lr;
 	}
 
+	@Override
+	public List<Reserve> findReseRecord() {
+		return this.query("select * from reserve", new ArrayList<Object>(), Reserve.class);
+	}
+
+	@Override
+	public Reserve findReserveById(int reserveid) {
+		return (Reserve) this.query("select * from reserve where reserveid = "+reserveid, new ArrayList<Object>(), Reserve.class).get(0);
+	}
+
+	@Override
+	public boolean deleteReserveRecord(int reserveid) {
+		String sql = "delete from reserve where reserveid = ?";
+		List<Object> lp = new ArrayList<Object>();
+		lp.add(reserveid);
+		return this.upadte(sql, lp);
+	}
+
+	@Override
+	public boolean updateReserveById(Reserve reserve) {
+		String sql = "update reserve set bookid = ?,borowerId = ?,reserveTime = ?,fetchTime = ?,status = ?,bookName = ? where reserveid = ?";
+		List<Object> lp = new ArrayList<Object>();
+		lp.add(reserve.getBookid());
+		lp.add(reserve.getBorowerId());
+		lp.add(reserve.getReserveTime());
+		lp.add(reserve.getFetchTime());
+		lp.add(reserve.getStatus());
+		lp.add(reserve.getBookName());
+		lp.add(reserve.getReserveid());
+		return this.upadte(sql, lp);
+	}
+
 }

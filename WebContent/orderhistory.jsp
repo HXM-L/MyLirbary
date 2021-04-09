@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>预约图书信息</title>
+<title>借阅记录</title>
 <style>
 #header {
 	width: 101%;
@@ -269,24 +269,23 @@ h1.userpagetitle {
 			alert(error);
 		}
 	}
+	
 	function Delete(Rid) { /* 删除按钮 */
 		var r = confirm("您确定要删除该记录吗？")
 		if (r == true) {
 			console.log("确定");
-			location.href = "Delete.do?AppointPage=UpRecord&rID="+Rid;
+			location.href = "Delete.do?AppointPage=orderhistory.jsp&rID="+Rid;
 		} else {
 			console.log("取消");
-			location.href = "borrowRecord.jsp";
+			location.href = "orderhistory.jsp";
 		}
 	}
-	function Modify(Rid) { /* 删除按钮 */
-		location.href = "ReturnDialog.do?AppointPage=UpRecord&rID="+Rid;
+	function Modify(Rid) { /* 修改按钮 */
+		location.href = "ReturnDialog.do?AppointPage=orderhistory.jsp&rID="+Rid;
 	}
-	
 </script>
 </head>
-<body
-	onload="getDay('${id}','${User.name}','${User.password}',${isFlag}),error()">
+<body onload="getDay('${id}','${User.name}','${User.password}',${isFlag}),error()">
 	<div id="header">
 		<div id="headertext">岭南师范学院图书馆书目检索系统</div>
 		<div>
@@ -328,7 +327,7 @@ h1.userpagetitle {
 				</div>
 			</div>
 			<div id="UserMasterRight">
-				<h1 class="userpagetitle">预约图书信息</h1>
+				<h1 class="userpagetitle">图书借阅信息</h1>
 				<input type="button" value="查询" onclick="searchRecord()" /><br />
 				<table class="tb" cellpadding="7" border="1" width="1250px"
 					cellspacing="0">
@@ -345,23 +344,18 @@ h1.userpagetitle {
 						</tr>
 					</thead>
 					<tbody>
-						<%
-							Self self = new Self();
-							SelfDao selfdao = new SelfDaoImpl();
-							BookDao bookDao = new BookDaoImpl();
-						%>
-						<c:forEach var="e" items="${RecordList}">
+						<c:forEach var="e" items="${reserveList}">
 							<tr>
-								<td>${e.borrRecordId}</td>
+								<td>${e.reserveid}</td>
 								<td>${e.bookid}</td>
 								<td>${e.bookName}</td>
-								<td>${e.borrowerId}</td>
-								<td>${e.borrTime}</td>
-								<td>${e.returnTime}</td>
-								<td>${e.overTime}</td>
+								<td>${e.borowerId}</td>
+								<td>${e.reserveTime}</td>
+								<td>${e.fetchTime}</td>
+								<td>${e.status}</td>
 								<td>
-									<input type="button" value="修改" onclick="Modify(${e.borrRecordId})" /> 
-									<input type="button" value="删除" onclick="Delete(${e.borrRecordId})" />
+									<input type="button" value="修改" onclick="Modify(${e.reserveid})" /> 
+									<input type="button" value="删除" onclick="Delete(${e.reserveid})" />
 								</td>
 							</tr>
 						</c:forEach>

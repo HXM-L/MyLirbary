@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>借阅记录</title>
+<title>修改预定记录</title>
 <style>
 #header {
 	width: 101%;
@@ -224,6 +224,26 @@ h1.userpagetitle {
 	top: 150px;
 	border: 2px;
 }
+
+table>tbody tr>td {
+	margin: 0px auto;
+	padding: 2px 0px 2px 2px;
+}
+
+table>tbody tr>td>input {
+	width: 160px;
+	height: 20px;
+}
+
+.inputFlag {
+	width: 50px;
+}
+
+input[type=submit], input[type=button] {
+	width: 40px;
+	text-align: center;
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+}
 </style>
 <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -232,9 +252,6 @@ h1.userpagetitle {
 	var userPwd = "";
 	function exit() {
 		location.href = "exit.do";
-	}
-	function searchRecord() {
-		location.href = "finRecord.do?findURL=buyBook.jsp";
 	}
 	function getDay(id, name, pwd) {
 		userID = id;
@@ -254,38 +271,9 @@ h1.userpagetitle {
 		document.getElementById("day").value = today;
 		document.getElementById("day").innerHTML = today;
 	}
-	
-	function showDialog(a){
-		/* alert("ID="+a); */
-		$("#dialog").css("display","block");
-		/* document.getElementById("dialog").style.display="block"; */
-		console.log($("#dialog").html());
-		console.log(a);
-	}
-	<%String error = (String) request.getAttribute("updateFlag");%>
-	function error(){
-		var error = '<%=error%>';
-		if (error != "null") {
-			alert(error);
-		}
-	}
-	
-	function Delete(Rid) { /* 删除按钮 */
-		var r = confirm("您确定要删除该记录吗？")
-		if (r == true) {
-			console.log("确定");
-			location.href = "Delete.do?AppointPage=buyBook.jsp&rID="+Rid;
-		} else {
-			console.log("取消");
-			location.href = "buyBook.jsp";
-		}
-	}
-	function Modify(Rid) { /* 修改按钮 */
-		location.href = "ReturnDialog.do?AppointPage=buyBook.jsp&rID="+Rid;
-	}
 </script>
 </head>
-<body onload="getDay('${id}','${User.name}','${User.password}',${isFlag}),error()">
+<body onload="getDay('${id}','${User.name}','${User.password}')">
 	<div id="header">
 		<div id="headertext">岭南师范学院图书馆书目检索系统</div>
 		<div>
@@ -327,40 +315,43 @@ h1.userpagetitle {
 				</div>
 			</div>
 			<div id="UserMasterRight">
-				<h1 class="userpagetitle">图书借阅信息</h1>
-				<input type="button" value="查询" onclick="searchRecord()" /><br />
-				<table class="tb" cellpadding="7" border="1" width="1250px"
-					cellspacing="0">
-					<thead class="tbhead">
-						<tr>
-							<th>购书单号</th>
-							<th>图书名称</th>
-							<th>图书单价</th>
-							<th>购买数量</th>
-							<th>图书编号</th>
-							<th>购买日期</th>
-							<th>总价</th>
-							<th>操作</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="e" items="${buyList}">
+				<h1 class="userpagetitle">修改借阅记录</h1>
+				<form action="UpdateReserve.do" method="post">
+					<table cellpadding="" border="1" width="1300px" cellspacing="0">
+						<thead class="tbhead">
 							<tr>
-								<td>${e.buyBookId}</td>
-								<td>${e.bookName}</td>
-								<td>${e.price}</td>
-								<td>${e.num}</td>
-								<td>${e.selfId}</td>
-								<td>${e.buyDate}</td>
-								<td>${e.sum}</td>
-								<td>
-									<input type="button" value="修改" onclick="Modify(${e.buyBookId})" /> 
-									<input type="button" value="删除" onclick="Delete(${e.buyBookId})" />
-								</td>
+								<th>预定记录号</th>
+								<th>图书ID号</th>
+								<th>图书名称</th>
+								<th>读者账号</th>
+								<th>预定日期</th>
+								<th>取书日期</th>
+								<th>取书状态</th>
+								<th>操作</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input type="text" name="reserveid"
+									value="${reList.reserveid}" autofocus="autofocus" /></td>
+								<td><input type="text" name="bookid"
+									value="${reList.bookid}" /></td>
+								<td><input type="text" name="bookName"
+									value="${reList.bookName}" /></td>
+								<td><input type="text" name="borowerId"
+									value="${reList.borowerId}" /></td>
+								<td><input type="text" name="reserveTime"
+									value="${reList.reserveTime}" /></td>
+								<td><input type="text" name="fetchTime"
+									value="${reList.fetchTime}" /></td>
+								<td><input type="text" name="status" class="inputFlag"
+									value="${reList.status}" /></td>
+								<td><input type="submit" value="确定"/>
+								<a href="orderhistory.jsp"><input type="button" value="取消" /></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
 			</div>
 		</div>
 	</div>

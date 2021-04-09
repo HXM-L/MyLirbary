@@ -49,6 +49,6 @@ public class log {
 	/*
 	 * 有变更:数据表bookType的tyteID改为typeID
 	 * Reserve.java添加bookName属性
-	 * 
+	 * 修改Reserve类的属性reserveid的数据类型为int
 	 * */
 }
