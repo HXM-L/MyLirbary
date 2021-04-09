@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>借阅记录</title>
+<title>修改借阅记录</title>
 <style>
 #header {
 	width: 101%;
@@ -20,11 +20,9 @@
 	margin-left: -7px;
 	margin-top: -7px;
 }
-
 .clearFix: {
 	display: inline-block;
 }
-
 #headertext {
 	height: 50px;
 	text-align: left;
@@ -35,19 +33,16 @@
 	padding-left: 5px;
 	font-family: 楷体_GB2312
 }
-
 .fr {
 	float: right;
 	margin-right: -65px;
 	margin-top: 9px;
 	width: 20%;
 }
-
 .redlink {
 	color: #ff0000;
 	text-decoration: none;
 }
-
 #headermenu {
 	height: 25px;
 	text-align: right;
@@ -55,7 +50,6 @@
 	padding-right: 20px;
 	float: right;
 }
-
 #pagemenu {
 	height: 30px;
 	line-height: 30px;
@@ -64,7 +58,6 @@
 	padding-left: 30px;
 	font-size: 13px
 }
-
 #search {
 	width: 101%;
 	overflow: hidden;
@@ -74,7 +67,6 @@
 	margin-top: -7px;
 	overflow: hidden;
 }
-
 .select {
 	font-size: 13px;
 	color: #000000;
@@ -82,25 +74,20 @@
 	float: left;
 	margin-left: 20px
 }
-
 .demo {
 	background: rgba(255, 255, 255, 0.1);
 }
-
 a:hover {
 	color: blue;
 }
-
 .Notice {
 	color: #000;
 	line-height: 30px;
 }
-
 .unlogin {
 	color: red;
 	text-decoration: none;
 }
-
 #UserMaster {
 	min-height: 450px;
 	height: auto;
@@ -108,11 +95,9 @@ a:hover {
 	width: 100%;
 	float: left;
 }
-
 .clearFix {
 	display: block;
 }
-
 #UserMasterLeft {
 	min-width: 160px;
 	width: 160px;
@@ -127,7 +112,6 @@ a:hover {
 	color: #333;
 	margin-left: -8px;
 }
-
 #UserMasterLeft .userinfo {
 	border-bottom: 2px solid #ddd;
 	display: block;
@@ -137,7 +121,6 @@ a:hover {
 	font-weight: 500;
 	height: 32px;
 }
-
 #userpagemenu {
 	width: 220px !important;
 	line-height: 80px;
@@ -148,7 +131,6 @@ a:hover {
 	height: 100%;
 	margin-left: -70px;
 }
-
 .select {
 	font-size: 16px;
 	color: #000000;
@@ -156,19 +138,16 @@ a:hover {
 	float: left;
 	margin-left: 20px
 }
-
 #content {
 	min-height: 500px;
 	height: auto;
 	text-align: left;
 }
-
 #UserMasterRight {
 	width: 1200px;
 	float: left;
 	padding: 10px;
 }
-
 h1.userpagetitle {
 	font-size: 14px;
 	padding-bottom: 12px;
@@ -180,29 +159,23 @@ h1.userpagetitle {
 	height: 16px;
 	border-bottom: 1px solid #ddd;
 }
-
 #userInfoContent {
 	margin-left: 10px;
 }
-
 #userInfoContent .infoline {
 	text-align: left;
 	margin-bottom: 20px;
 	margin-left: 60px;
 }
-
 #userInfoContent .infoline .infoleft {
 	width: 30%;
 }
-
 #userInfoContent .infoline .inforight {
 	margin-left: 15px;
 }
-
 .tbhead {
 	text-align: center;
 }
-
 #dialog {
 	clear: both;
 	position: relative;
@@ -214,7 +187,6 @@ h1.userpagetitle {
 	z-index: 5;
 	display: block;
 }
-
 #dialog>div {
 	position: absolute;
 	width: 1200px;
@@ -224,6 +196,22 @@ h1.userpagetitle {
 	top: 150px;
 	border: 2px;
 }
+table>tbody tr>td {
+	margin: 0px auto;
+	padding: 2px 0px 2px 2px;
+}
+table>tbody tr>td>input {
+	width: 160px;
+	height: 20px;
+}
+.inputFlag {
+	width: 50px;
+}
+input[type=submit],input[type=button]{
+	width: 40px;
+	text-align: center;
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+}
 </style>
 <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -232,9 +220,6 @@ h1.userpagetitle {
 	var userPwd = "";
 	function exit() {
 		location.href = "exit.do";
-	}
-	function searchRecord() {
-		location.href = "finRecord.do?findURL=buyBook.jsp";
 	}
 	function getDay(id, name, pwd) {
 		userID = id;
@@ -254,38 +239,9 @@ h1.userpagetitle {
 		document.getElementById("day").value = today;
 		document.getElementById("day").innerHTML = today;
 	}
-	
-	function showDialog(a){
-		/* alert("ID="+a); */
-		$("#dialog").css("display","block");
-		/* document.getElementById("dialog").style.display="block"; */
-		console.log($("#dialog").html());
-		console.log(a);
-	}
-	<%String error = (String) request.getAttribute("updateFlag");%>
-	function error(){
-		var error = '<%=error%>';
-		if (error != "null") {
-			alert(error);
-		}
-	}
-	
-	function Delete(Rid) { /* 删除按钮 */
-		var r = confirm("您确定要删除该记录吗？")
-		if (r == true) {
-			console.log("确定");
-			location.href = "Delete.do?AppointPage=buyBook.jsp&rID="+Rid;
-		} else {
-			console.log("取消");
-			location.href = "buyBook.jsp";
-		}
-	}
-	function Modify(Rid) { /* 修改按钮 */
-		location.href = "ReturnDialog.do?AppointPage=buyBook.jsp&rID="+Rid;
-	}
 </script>
 </head>
-<body onload="getDay('${id}','${User.name}','${User.password}',${isFlag}),error()">
+<body onload="getDay('${id}','${User.name}','${User.password}')">
 	<div id="header">
 		<div id="headertext">岭南师范学院图书馆书目检索系统</div>
 		<div>
@@ -327,45 +283,43 @@ h1.userpagetitle {
 				</div>
 			</div>
 			<div id="UserMasterRight">
-				<h1 class="userpagetitle">图书借阅信息</h1>
-				<input type="button" value="查询" onclick="searchRecord()" /><br />
-				<table class="tb" cellpadding="7" border="1" width="1250px"
-					cellspacing="0">
-					<thead class="tbhead">
-						<tr>
-							<th>购书单号</th>
-							<th>图书名称</th>
-							<th>图书单价</th>
-							<th>购买数量</th>
-							<th>图书编号</th>
-							<th>购买日期</th>
-							<th>总价</th>
-							<th>操作</th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-							Self self = new Self();
-							SelfDao selfdao = new SelfDaoImpl();
-							BookDao bookDao = new BookDaoImpl();
-						%>
-						<c:forEach var="e" items="${buyList}">
+				<h1 class="userpagetitle">修改借阅记录</h1>
+				<form action="UpdateBuyRecord.do" method="post">
+					<table cellpadding="" border="1" width="1300px" cellspacing="0">
+						<thead class="tbhead">
 							<tr>
-								<td>${e.buyBookId}</td>
-								<td>${e.bookName}</td>
-								<td>${e.price}</td>
-								<td>${e.num}</td>
-								<td>${e.selfId}</td>
-								<td>${e.buyDate}</td>
-								<td>${e.sum}</td>
-								<td>
-									<input type="button" value="修改" onclick="Modify(${e.buyBookId})" /> 
-									<input type="button" value="删除" onclick="Delete(${e.buyBookId})" />
-								</td>
+								<th>购书单号</th>
+								<th>图书名称</th>
+								<th>图书单价</th>
+								<th>购买数量</th>
+								<th>图书编号</th>
+								<th>购买日期</th>
+								<th>总价</th>
+								<th>操作</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input type="text" name="buyBookId"
+									value="${buyRecord.buyBookId}" autofocus="autofocus" /></td>
+								<td><input type="text" name="bookName"
+									value="${buyRecord.bookName}" /></td>
+								<td><input type="text" name="price"
+									value="${buyRecord.price}" /></td>
+								<td><input type="text" name="num"
+									value="${buyRecord.num}" /></td>
+								<td><input type="text" name="selfId"
+									value="${buyRecord.selfId}" /></td>
+								<td><input type="text" name="buyDate"
+									value="${buyRecord.buyDate}" /></td>
+								<td><input type="text" name="sum" class="inputFlag"
+									value="${buyRecord.sum}" /></td>
+								<td><input type="submit" value="确定"/>
+								<a href="buyBook.jsp"><input type="button" value="取消" /></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
 			</div>
 		</div>
 	</div>

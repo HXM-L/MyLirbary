@@ -34,15 +34,10 @@ public class FinRecordAction implements Action {	//查找所有记录
 			List<BuyBook> buyList=buyDao.findAllBuyBook();
 			session.setAttribute("buyList", buyList);
 			URL="buyBook.jsp";
-		}else if(req.getParameter("findURL").equals("orderhistory.jsp")) {
-			BorrrecordDao bRecord=new BorrrecordDaoImpl();
-			List<Borrrecord> list=bRecord.findRecordByBorrower();
-			session.setAttribute("RecordList", list);
-			System.out.println(list.get(0).getBorrowerId());
-			System.out.println("图书名:"+list.get(0).getBookName());
+		}else if(req.getParameter("findURL").equals("orderhistory.jsp")) {	//预约图书记录
+			
 			URL="orderhistory.jsp";
 		}
-		
 		return URL;
 	}
 }
