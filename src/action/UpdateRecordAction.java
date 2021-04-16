@@ -17,6 +17,8 @@ public class UpdateRecordAction implements Action {	//更新借阅记录
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) { // 更新借阅记录
+		String URL=null;
+		String returnFlag=null;
 		BorrrecordDao recordDao = new BorrrecordDaoImpl();
 		Borrrecord brecord=new Borrrecord();
 		String bookName = null;
@@ -26,6 +28,7 @@ public class UpdateRecordAction implements Action {	//更新借阅记录
 			bookName = new String(req.getParameter("bookName").getBytes("iso-8859-1"), "utf-8");
 			againFlag = new String(req.getParameter("aginBorr").getBytes("iso-8859-1"), "utf-8");
 			overFlag = new String(req.getParameter("overTime").getBytes("iso-8859-1"), "utf-8");
+			returnFlag = new String(req.getParameter("returnFlag").getBytes("iso-8859-1"), "utf-8");
 		} catch (UnsupportedEncodingException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -44,6 +47,7 @@ public class UpdateRecordAction implements Action {	//更新借阅记录
 		brecord.setOverTime(overFlag);
 		brecord.setReturnTime(req.getParameter("returnTime"));
 		
+		System.out.println(brecord.getBorrowerId());
 		System.out.println(bookName);
 		if (recordDao.updateRecordByRID(brecord)) { //返回操作是否成功
 			req.setAttribute("updateFlag", "更新成功");
@@ -51,7 +55,13 @@ public class UpdateRecordAction implements Action {	//更新借阅记录
 		} else {
 			req.setAttribute("updateFlag", "更新失败");
 		}
-		return "borrowRecord.jsp";
+		System.out.println(returnFlag);
+		if(returnFlag.equals("是")) {
+			URL="borrowRecord.jsp";
+		}else if(returnFlag.equals("否")) {
+			URL="borrowing.jsp";
+		}
+		return URL;
 	}
 
 }

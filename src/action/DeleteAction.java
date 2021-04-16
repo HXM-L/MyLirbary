@@ -41,6 +41,14 @@ public class DeleteAction implements Action {// 所有删除操作
 				req.setAttribute("updateFlag", "删除失败");
 			}
 			URL="orderhistory.jsp";
+		}else if (req.getParameter("AppointPage").equals("urgeReturn")) {	//删除一条指定ID的借阅记录
+			BorrrecordDao BRecord = new BorrrecordDaoImpl();
+			if (BRecord.deleteRecord(req.getParameter("rID"))) {
+				req.setAttribute("updateFlag", "删除成功");
+			} else {
+				req.setAttribute("updateFlag", "删除失败");
+			}
+			URL="urgeReturn.jsp";
 		}
 
 		System.out.println("kkkkk");

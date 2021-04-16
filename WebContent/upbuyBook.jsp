@@ -301,9 +301,9 @@ input[type=submit],input[type=button]{
 						<tbody>
 							<tr>
 								<td><input type="text" name="buyBookId"
-									value="${buyRecord.buyBookId}" autofocus="autofocus" /></td>
+									value="${buyRecord.buyBookId}"/></td>
 								<td><input type="text" name="bookName"
-									value="${buyRecord.bookName}" /></td>
+									value="${buyRecord.bookName}"  autofocus="autofocus" /></td>
 								<td><input type="text" name="price"
 									value="${buyRecord.price}" /></td>
 								<td><input type="text" name="num"

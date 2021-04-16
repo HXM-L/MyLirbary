@@ -333,9 +333,9 @@ input[type=submit], input[type=button] {
 						<tbody>
 							<tr>
 								<td><input type="text" name="reserveid"
-									value="${reList.reserveid}" autofocus="autofocus" /></td>
+									value="${reList.reserveid}" disabled="disabled"/></td>
 								<td><input type="text" name="bookid"
-									value="${reList.bookid}" /></td>
+									value="${reList.bookid}"  autofocus="autofocus" /></td>
 								<td><input type="text" name="bookName"
 									value="${reList.bookName}" /></td>
 								<td><input type="text" name="borowerId"

@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@page import="java.util.List"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="dao.*"%>
+<%@page import="dao.impl.*"%>
+<%@page import="bean.*"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>我的图书馆</title>
+<title>当前借阅和续借情况</title>
 <style>
 #header {
 	width: 101%;
@@ -158,7 +164,7 @@ a:hover {
 }
 
 #UserMasterRight {
-	width: 76;
+	width: 1200px;
 	float: left;
 	padding: 10px;
 }
@@ -192,21 +198,51 @@ h1.userpagetitle {
 #userInfoContent .infoline .inforight {
 	margin-left: 15px;
 }
+
+.tbhead {
+	text-align: center;
+}
+
+#dialog {
+	clear: both;
+	position: relative;
+	width: 1600px;
+	height: 800px;
+	left: -170px;
+	top: -295px;
+	background-color: rgba(176, 176, 176, 0.7);
+	z-index: 5;
+	display: block;
+}
+
+#dialog>div {
+	position: absolute;
+	width: 1200px;
+	height: 620px;
+	background-color: white;
+	left: 200px;
+	top: 150px;
+	border: 2px;
+}
 </style>
+<script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-	var userID="";
-	var userName="";
-	var userPwd="";
+	var userID = "";
+	var userName = "";
+	var userPwd = "";
 	function exit() {
 		location.href = "exit.do";
 	}
-	function getDay(id,name,pwd) {
-		userID=id;
-		userName=name;
-		userPwd=pwd;
-		console.log(id) 
-		console.log(name) 
-		console.log(pwd) 
+	function searchRecord() {
+		location.href = "finRecord.do?findURL=borrowing.jsp";
+	}
+	function getDay(id, name, pwd) {
+		userID = id;
+		userName = name;
+		userPwd = pwd;
+		console.log(id)
+		console.log(name)
+		console.log(pwd)
 		let today = "";
 		let arry = [ '日', '一', '二', '三', '四', '五', '六' ];
 		let now = new Date();
@@ -217,19 +253,40 @@ h1.userpagetitle {
 		today += year + "年" + month + "月" + day + "日 星期" + arry[week];
 		document.getElementById("day").value = today;
 		document.getElementById("day").innerHTML = today;
-		
 	}
+	
+	<%String error = (String) request.getAttribute("updateFlag");%>
+	function error(){
+		var error = '<%=error%>';
+		if (error != "null") {
+			alert(error);
+		}
+	}
+	function Delete(Rid) { /* 删除按钮 */
+		var r = confirm("您确定要删除该记录吗？")
+		if (r == true) {
+			console.log("确定");
+			location.href = "Delete.do?AppointPage=UpRecord&rID="+Rid;
+		} else {
+			console.log("取消");
+			location.href = "borrowRecord.jsp";
+		}
+	}
+	function Modify(Rid) { /* 修改按钮 */
+		location.href = "ReturnDialog.do?AppointPage=UpRecord&rID="+Rid;
+	}
+	
 </script>
 </head>
-<body onload="getDay('${id}','${User.name}','${User.password}')">
+<body
+	onload="getDay('${id}','${User.name}','${User.password}',${isFlag}),error()">
 	<div id="header">
 		<div id="headertext">岭南师范学院图书馆书目检索系统</div>
 		<div>
 			<div class="fr">
 				&nbsp;&nbsp;<a href=" ">English</a><span>|</span> <a
 					href="login.jsp" class="unlogin">退出</a> <span>|</span> <a href=" ">检索历史</a>
-				<br> 今天是<span id="day" value=""></span>
-
+				<br> 今天是<span id="day"></span>
 			</div>
 		</div>
 	</div>
@@ -237,9 +294,10 @@ h1.userpagetitle {
 		<ul style="list-style: none;">
 			<li><a href="editBooks.jsp" class="select">图书管理</a></li>
 			<li><a href="editBookType.jsp" class="select">图书分类管理</a></li>
-			<li><a href="borrowRecord.jsp" class="select">图书借阅信息</a></li>
-			<li><a href="admin.jsp" class="select">报表导出</a></li>
-			<li><a href="admin.jsp" class="select">购置图书</a>
+			<li><a href="borrowRecord.jsp" class="select"
+				onclick="searchRecord()">图书借阅信息</a></li>
+			<li><a href="returnInfo.jsp" class="select">报表导出</a></li>
+			<li><a href="buyBook.jsp" class="select">购置图书</a>
 		</ul>
 	</div>
 	<div id="content" class="clearFix">
@@ -252,7 +310,6 @@ h1.userpagetitle {
 							<li><a class="select" href="admin.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
 							</li>
 							<li><a class="select" href="updatePwd.jsp">修改密码</a></li>
-
 							<li><a class="select" href="orderhistory.jsp">预约图书信息</a></li>
 							<li><a class="select" href="borrowing.jsp">当前借阅情况和续借</a></li>
 							<li><a class="select" href="urgeReturn.jsp">催还图书信息</a></li>
@@ -264,32 +321,44 @@ h1.userpagetitle {
 				</div>
 			</div>
 			<div id="UserMasterRight">
-				<form action="" method="post">
-					<h1 class="userpagetitle">当前借阅情况</h1>
-					<div style="width: 900px">
-						<table class="tb" cellpadding="7" border="1">
-							<thead class="tbhead">
-								<tr>
-									<td width="10%">续借</td>
-									<td width="10%">最迟应还期</td>
-									<td width="45%">书名</td>
-									<td width="45%">作者</td>
-									<td width="45%">图书类型</td>
-									<td width="20%">图书ID号</td>
-									<td width="10%">借期</td>
-								</tr>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-						<br /> <input name="" type="submit" value="续借" />
-					</div>
-				</form>
+				<h1 class="userpagetitle">图书借阅信息</h1>
+				<input type="button" value="查询" onclick="searchRecord()" /><br />
+				<table class="tb" cellpadding="7" border="1" width="1250px"
+					cellspacing="0">
+					<thead class="tbhead">
+						<tr>
+							<th>借阅记录号</th>
+							<th>图书ID号</th>
+							<th>图书名称</th>
+							<th>读者账号</th>
+							<th>借阅日期</th>
+							<th>还书日期</th>
+							<th>续借</th>
+							<th>超期</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="e" items="${borrowinglist}">
+							<tr>
+								<td>${e.borrRecordId}</td>
+								<td>${e.bookid}</td>
+								<td>${e.bookName}</td>
+								<td>${e.borrowerId}</td>
+								<td>${e.borrTime}</td>
+								<td>${e.returnTime}</td>
+								<td>${e.aginBorr}</td>
+								<td>${e.overTime}</td>
+								<td>
+									<input type="button" value="修改" onclick="Modify(${e.borrRecordId})" /> 
+									<input type="button" value="删除" onclick="Delete(${e.borrRecordId})" />
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
-
 	</div>
-
 </body>
 </html>

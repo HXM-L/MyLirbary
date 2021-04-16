@@ -239,6 +239,10 @@ input[type=submit],input[type=button]{
 		document.getElementById("day").value = today;
 		document.getElementById("day").innerHTML = today;
 	}
+	$(document).ready(function(){	//隐藏还书标志
+		$('tr').find('th:eq(9)').hide();
+		$('tr').find('td:eq(9)').hide();
+	});
 </script>
 </head>
 <body onload="getDay('${id}','${User.name}','${User.password}')">
@@ -297,14 +301,15 @@ input[type=submit],input[type=button]{
 								<th>续借</th>
 								<th>超期</th>
 								<th>操作</th>
+								<th>还书标志</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td><input type="text" name="recordID"
-									value="${recoed.borrRecordId}" autofocus="autofocus" /></td>
+									value="${recoed.borrRecordId}"/></td>
 								<td><input type="text" name="bookID"
-									value="${recoed.bookid}" /></td>
+									value="${recoed.bookid}"  autofocus="autofocus" /></td>
 								<td><input type="text" name="bookName"
 									value="${recoed.bookName}" /></td>
 								<td><input type="text" name="borrowerId"
@@ -318,7 +323,11 @@ input[type=submit],input[type=button]{
 								<td><input type="text" name="overTime" class="inputFlag"
 									value="${recoed.overTime}" /></td>
 								<td><input type="submit" value="确定"/>
-								<a href="borrowRecord.jsp"><input type="button" value="取消" /></a></td>
+								<a href="borrowRecord.jsp"><input type="button" value="取消" /></a>
+								</td>
+								<td><input type="text" name="returnFlag"
+									value="${recoed.returnFlag}" />
+								</td>
 							</tr>
 						</tbody>
 					</table>

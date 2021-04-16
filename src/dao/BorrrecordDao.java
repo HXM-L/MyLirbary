@@ -26,4 +26,8 @@ public interface BorrrecordDao {
 	public boolean updateRecordByRID(Borrrecord brecord); // 更新指定borrowerId的借阅记录
 	
 	public boolean deleteRecord(String recordID);	//删除一条记录
+	
+	public List<Borrrecord> findBorrowIng();	//查询没有归还图书的借阅记录
+	
+	public List<Borrrecord> findUrge();	//查询需要催还图书的记录
 }
