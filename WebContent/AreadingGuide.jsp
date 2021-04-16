@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>目录检索</title>
+<title>读书指引</title>
 <style>
 #header {
 	width: 101%;

@@ -48,7 +48,7 @@ public class LoginAction implements Action {	//登录操作
 				returnJsp= "admin.jsp";
 			}else {
 				req.setAttribute("str","用户名或密码错误!");
-				returnJsp= "index.jsp";
+				returnJsp= "login.jsp";
 			}
 		}else{
 			Borrower borrower=borrDao.findBorrower(id+"", password, loginType);
@@ -56,7 +56,7 @@ public class LoginAction implements Action {	//登录操作
 				session.setAttribute("UserType", "B");
 				session.setAttribute("id", borrower.getBorrowerId());
 				session.setAttribute("User", borrower);
-				returnJsp= "index.jsp";
+				returnJsp= "ApersonalInfo.jsp";
 			}else {
 				req.setAttribute("str","用户名或密码错误!");
 				returnJsp= "login.jsp";

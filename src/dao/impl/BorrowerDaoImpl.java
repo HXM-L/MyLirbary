@@ -11,7 +11,12 @@ public class BorrowerDaoImpl extends BaseDao implements BorrowerDao {
 
 	@Override
 	public Borrower findBorrower(String borrowerId, String password, int type) {
-		return (Borrower) this.query("select * from borrower where borrowerId=" + borrowerId + "and password="+ password + "and identityId=" + type, new ArrayList<Object>(), Borrower.class).get(0);
+		String sql="select * from borrower where borrowerId=" + borrowerId + "and password="+ password + "and identityId=" + type;
+		if(this.query(sql, new ArrayList<Object>(), Borrower.class).size()==0) {
+			//这个地方只能用size来判断，如果判断是否为null的话会报错的，因为list集合本身是不会为null的
+			return null;
+		}
+		return (Borrower) this.query(sql, new ArrayList<Object>(), Borrower.class).get(0);
 	}
 
 	@Override

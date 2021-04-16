@@ -75,7 +75,7 @@
 			alert(str);
 		}
 	}
-	<%String error = (String) request.getAttribute("updateFlag");%>
+	<%String error = (String) request.getAttribute("str");%>
 	function error(){
 		var error = '<%=error%>';
 		if (error != "null") {
