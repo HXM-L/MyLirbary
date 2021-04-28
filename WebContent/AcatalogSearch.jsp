@@ -137,6 +137,11 @@ a:hover {  color : blue ; }
 	color:red;
 	text-decoration: none;
 }
+.showBooks{
+	width:1300px;
+	margin:10px auto;
+	//background-color: yellow;
+}
 </style>
 <script type="text/javascript">
 	var userID="";
@@ -203,6 +208,41 @@ a:hover {  color : blue ; }
 			<input class="searchButton" type="submit" value="书目检索" />
 		</form>
 	</div>
-	
+	<div class="showBooks">
+		<table class="tb" cellpadding="7" border="1" width="1250px"
+					cellspacing="0">
+					<thead class="tbhead">
+						<tr>
+							<th>书架位置</th>
+							<th>图书名称</th>
+							<th>图书作者</th>
+							<th>图书简介</th>
+							<th>图书类型</th>
+							<th>出版社名称</th>
+							<th>出版日期</th>
+							<th>剩余数量</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="e" items="${borrowinglist}">
+							<tr>
+								<td>${e.borrRecordId}</td>
+								<td>${e.bookid}</td>
+								<td>${e.bookName}</td>
+								<td>${e.borrowerId}</td>
+								<td>${e.borrTime}</td>
+								<td>${e.returnTime}</td>
+								<td>${e.aginBorr}</td>
+								<td>${e.overTime}</td>
+								<td>
+									<input type="button" value="修改" onclick="Modify(${e.borrRecordId})" /> 
+									<input type="button" value="删除" onclick="Delete(${e.borrRecordId})" />
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+	</div>
 </body>
 </html>

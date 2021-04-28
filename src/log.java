@@ -51,4 +51,14 @@ public class log {
 	 * Reserve.java添加bookName属性
 	 * 修改Reserve类的属性reserveid的数据类型为int
 	 * */
+	
+	/*
+	 * session：
+	 * typeList：图书类型列表
+	 * RecordList:所有借阅记录列表
+	 * buyList:购书清单列表
+	 * reserveList:预约图书记录列表
+	 * borrowinglist:当前借阅记录
+	 * UrgeList:需要催还图书记录
+	 */
 }

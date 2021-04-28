@@ -41,7 +41,7 @@ public class FinRecordAction implements Action { // 查找所有记录
 			List<Reserve> reserveList = reserDao.findReseRecord();
 			session.setAttribute("reserveList", reserveList);
 			URL = "orderhistory.jsp";
-		}else if (req.getParameter("findURL").equals("borrowing.jsp")) { // 预约图书记录
+		}else if (req.getParameter("findURL").equals("borrowing.jsp")) { // 当前借阅记录
 			BorrrecordDao bRecord = new BorrrecordDaoImpl();
 			List<Borrrecord> borrowinglist = bRecord.findBorrowIng();
 			session.setAttribute("borrowinglist", borrowinglist);
@@ -51,7 +51,7 @@ public class FinRecordAction implements Action { // 查找所有记录
 			System.out.println("图书名:" + borrowinglist.get(0).getBookName());
 			URL = "borrowing.jsp";
 		}else {
-			if (req.getParameter("findURL").equals("urgeReturn.jsp")) { // 查询所有借阅记录
+			if (req.getParameter("findURL").equals("urgeReturn.jsp")) { // 需要催还图书记录记录
 				BorrrecordDao bRecord = new BorrrecordDaoImpl();
 				List<Borrrecord> list = bRecord.findUrge();
 				session.setAttribute("UrgeList", list);

@@ -71,7 +71,7 @@
 }
 
 .select {
-	font-size: 16px;
+	font-size: 18px;
 	color: #000000;
 	text-decoration: none;
 	float: left;
@@ -144,13 +144,7 @@ a:hover {
 	margin-left: -70px;
 }
 
-.select {
-	font-size: 16px;
-	color: #000000;
-	text-decoration: none;
-	float: left;
-	margin-left: 20px
-}
+
 
 #content {
 	min-height: 500px;
@@ -193,6 +187,13 @@ h1.userpagetitle {
 #userInfoContent .infoline .inforight {
 	margin-left: 15px;
 }
+#userpagemenu>ul>li>a{
+	font-size: 16px;
+	color: #000000;
+	text-decoration: none;
+	float: left;
+	margin-left: 20px
+}
 </style>
 <script type="text/javascript">
 	function exit() {
@@ -228,11 +229,11 @@ h1.userpagetitle {
 	</div>
 	<div id="search">
 		<ul style="list-style: none;">
-			<li><a href="index.jsp" class="select">目录检索</a></li>
-			<li><a href="introduction.jsp" class="select">入馆指南</a></li>
-			<li><a href="introduction.jsp" class="select">服务</a></li>
-			<li><a href="introduction.jsp" class="select">公告</a></li>
-			<li><a href="personalInfo.jsp" class="select">我的图书馆</a>
+			<li><a href="AcatalogSearch.jsp" class="select">目录检索</a></li>
+			<li><a href="AentryGuide.jsp" class="select">入馆指南</a></li>
+			<li><a href="AreadingGuide.jsp" class="select">读书指引</a></li>
+			<li><a href="ARecommendation.jsp" class="select">读者荐购</a></li>
+			<li><a href="ApersonalInfo.jsp" class="select">我的图书馆</a>
 		</ul>
 	</div>
 	<div id="content" class="clearFix">
@@ -242,15 +243,15 @@ h1.userpagetitle {
 					欢迎您，${User.name}
 					<div id="userpagemenu">
 						<ul style="list-style-type: none">
-							<li><a class="select" href="personalInfo.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
+							<li><a class="" href="personalInfo.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
 							</li>
-							<li><a class="select" href="updatePwd.jsp">修改密码</a></li>
-							<li><a class="select" href="orderhistory.jsp">预约图书信息</a></li>
-							<li><a class="select" href="borrowing.jsp">当前借阅情况和续借</a></li>
-							<li><a class="select" href="urgeReturn.jsp">催还图书信息</a></li>
-							<li><a class="select" href="booksborrowedhistory.jsp">我的借阅历史</a>
+							<li><a class="" href="updatePwd.jsp">修改密码</a></li>
+							<li><a class="" href="orderhistory.jsp">预约图书信息</a></li>
+							<li><a class="" href="borrowing.jsp">当前借阅情况和续借</a></li>
+							<li><a class="" href="urgeReturn.jsp">催还图书信息</a></li>
+							<li><a class="" href="booksborrowedhistory.jsp">我的借阅历史</a>
 							</li>
-							<li><a class="select" href="#">退出登录</a></li>
+							<li><a class="" href="#">退出登录</a></li>
 						</ul>
 					</div>
 				</div>

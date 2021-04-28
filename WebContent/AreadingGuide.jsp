@@ -183,11 +183,11 @@ a:hover {  color : blue ; }
 	</div>
 	<div id="search">
 		<ul style="list-style: none;">
-			<li><a href="index.jsp" class="select">目录检索</a></li>
-			<li><a href="index.jsp" class="select">入馆指南</a></li>
-			<li><a href="index.jsp" class="select">读书指引</a></li>
-			<li><a href="index.jsp" class="select">读者荐购</a></li>
-			<li><a href="personalInfo.jsp" class="select">我的图书馆</a>
+			<li><a href="AcatalogSearch.jsp" class="select">目录检索</a></li>
+			<li><a href="AentryGuide.jsp" class="select">入馆指南</a></li>
+			<li><a href="AreadingGuide.jsp" class="select">读书指引</a></li>
+			<li><a href="ARecommendation.jsp" class="select">读者荐购</a></li>
+			<li><a href="ApersonalInfo.jsp" class="select">我的图书馆</a>
 		</ul>
 	</div>
 	<div  style="margin-left: 300px">
