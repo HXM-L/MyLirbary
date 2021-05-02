@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -169,9 +170,31 @@ a:hover {  color : blue ; }
 		document.getElementById("day").innerHTML = today;
 		
 	}
+	<%String error = (String) request.getAttribute("error");%>
+	function error(){
+		var error = '<%=error%>';
+		if (error != "null") {
+			alert(error);
+		}
+	}
+	function searchBook()	/*搜索图书*/
+	  {
+		  var condition=document.getElementById("condition").value;
+		  var keyword=document.getElementById("keyword").value;
+		  if(condition=="请选择")
+		  {
+			  alert("请选择查询类型!");
+		  }else if(keyword==""){
+			  alert("请输入关键词!");
+		  }
+		  else
+		  {
+			  location.href="Searchbook.do?condition="+condition+"&keyword="+keyword;
+		  }
+	  }
 </script>
 </head>
-<body onload="getDay('${id}','${User.name}','${User.password}')">
+<body onload="getDay('${id}','${User.name}','${User.password}'),error()">
 	<div id="header">
 		<div id="headertext">岭南师范学院图书馆书目检索系统</div>
 		<div>
@@ -196,16 +219,16 @@ a:hover {  color : blue ; }
 		</ul>
 	</div>
 	<div  style="margin-left: 300px">
-		<form action="" class="formgroup">
-			<select style="height: 38px">
+		<form action="" class="formgroup" method="post">
+			<select id="condition" style="height: 38px">
 				<option>请选择</option>
-				<option value="bookType" name="bookType">图书类型</option>
-				<option value="author" name="author">作者名</option>
-				<option value="bookName" name="bookName">图书名称</option>
-				<option value="pusher" name="pusher">出版社名称</option>
+				<option value="bookType">图书类型</option>
+				<option value="author">作者名</option>
+				<option value="bookName">图书名称</option>
+				<option value="pusher">出版社名称</option>
 			</select> 
-			<input class="form-control" placeholder="请输入关键字" type="text" name="pusher">
-			<input class="searchButton" type="submit" value="书目检索" />
+			<input class="form-control" placeholder="请输入关键字" type="text" id="keyword" required="required">
+			<input class="searchButton" type="button" value="书目检索" onclick="searchBook()"/>
 		</form>
 	</div>
 	<div class="showBooks">
@@ -225,19 +248,18 @@ a:hover {  color : blue ; }
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="e" items="${borrowinglist}">
+						<c:forEach var="e" items="${searchList}">
 							<tr>
-								<td>${e.borrRecordId}</td>
-								<td>${e.bookid}</td>
-								<td>${e.bookName}</td>
-								<td>${e.borrowerId}</td>
-								<td>${e.borrTime}</td>
-								<td>${e.returnTime}</td>
-								<td>${e.aginBorr}</td>
-								<td>${e.overTime}</td>
+								<td>${e.selfId}</td>
+								<td>${e.bookname}</td>
+								<td>${e.author}</td>
+								<td>${e.introduction}</td>
+								<td>${e.typename}</td>
+								<td>${e.publisher}</td>
+								<td>${e.publisherDate}</td>
+								<td>${e.bookNum}</td>
 								<td>
-									<input type="button" value="修改" onclick="Modify(${e.borrRecordId})" /> 
-									<input type="button" value="删除" onclick="Delete(${e.borrRecordId})" />
+									<input type="button" value="预约" onclick="Modify(${e.selfId})" /> 
 								</td>
 							</tr>
 						</c:forEach>

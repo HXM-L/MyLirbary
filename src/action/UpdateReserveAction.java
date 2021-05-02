@@ -29,7 +29,7 @@ public class UpdateReserveAction implements Action {
 			e1.printStackTrace();
 		}
 		reserve.setReserveid(Integer.parseInt(req.getParameter("reserveid")));
-		reserve.setBookid(req.getParameter("bookid"));
+		reserve.setselfId(req.getParameter("selfId"));
 		reserve.setBorowerId(req.getParameter("borowerId"));
 		reserve.setReserveTime(req.getParameter("reserveTime"));
 		reserve.setFetchTime(req.getParameter("fetchTime"));

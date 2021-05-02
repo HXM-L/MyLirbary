@@ -37,4 +37,9 @@ public class BookTypeDaoImpl extends BaseDao implements BookTypeDao {
 		return this.upadte(sql, lp);
 	}
 
+	@Override
+	public BookType findTypeById(int typeid) {
+		return (BookType) this.query("select * from booktype where typeId="+typeid,new ArrayList<Object>(),BookType.class).get(0);
+	}
+
 }

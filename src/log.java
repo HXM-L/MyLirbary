@@ -23,7 +23,6 @@ public class log {
 	
 	 * 
 	 * eclipse的格式化快捷键不好用,有时候会引发代码的语法错误,和其他逻辑错误
-	 * eclipse的切换选项卡的快捷键一点都不方便
 	 * */
 	
 	/*问题：
@@ -50,6 +49,7 @@ public class log {
 	 * 有变更:数据表bookType的tyteID改为typeID
 	 * Reserve.java添加bookName属性
 	 * 修改Reserve类的属性reserveid的数据类型为int
+	 * Self.java添加了属性typename
 	 * */
 	
 	/*
@@ -60,5 +60,6 @@ public class log {
 	 * reserveList:预约图书记录列表
 	 * borrowinglist:当前借阅记录
 	 * UrgeList:需要催还图书记录
+	 * searchList:目录检索的查询结果返回的list
 	 */
 }

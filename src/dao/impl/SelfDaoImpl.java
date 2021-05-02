@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.Self;
+import dao.BookTypeDao;
 import dao.SelfDao;
 import dbc.BaseDao;
 
@@ -50,23 +51,26 @@ public class SelfDaoImpl extends BaseDao implements SelfDao {
 
 	@Override
 	public List<Self> findBookBybookTypeId(int typeid, String bookname, String publisher, String author) {
-		List<Self> ls = null;
-		List<Object> lp = new ArrayList<Object>();
 		String sql = "select * from self where ";
+		List<Self> selfList=null;
+		BookTypeDao typeDao=new BookTypeDaoImpl();
 		if (typeid != 0) {
-			sql += "typeid = " + typeid;
+			sql += "typeid=" + typeid;
+		}else if (bookname != null) {
+			sql += "bookname like '%" + bookname + "%'";
+		}else if (publisher != null) {
+			sql += "publisher like '%" + publisher + "%'";
+		}else if (author != null) {
+			System.out.println(author);
+			sql += "author like '%" + author + "%'";
 		}
-		if (bookname != null) {
-
-			sql += "bookname = '" + bookname + "'";
+		if(this.query(sql, new ArrayList<Object>(), Self.class).size()>0) {
+			selfList=this.query(sql, new ArrayList<Object>(), Self.class);
+			for(Self item:selfList) {
+				System.out.println(item.getTypeId());
+				item.setTypename(typeDao.findTypeById(item.getTypeId()).getName());
+			}
 		}
-		if (publisher != null) {
-			sql += "publisher = '" + publisher + "'";
-		}
-		if (author != null) {
-			sql += "author = '" + author + "'";
-		}
-		ls = this.query(sql, lp, Self.class);
-		return ls;
+		return selfList;
 	}
 }

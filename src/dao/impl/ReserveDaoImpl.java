@@ -14,7 +14,7 @@ public class ReserveDaoImpl extends BaseDao implements ReserveDao {
 		boolean isFlag = false;
 		List<Object> lp =new ArrayList<Object>();
 		String sql ="insert into reserve values(?,?,?,?,?,?)";
-		lp.add(r.getBookid());
+		lp.add(r.getselfId());
 		lp.add(r.getBorowerId());
 		lp.add(r.getReserveTime());
 		lp.add(r.getFetchTime());
@@ -56,7 +56,7 @@ public class ReserveDaoImpl extends BaseDao implements ReserveDao {
 	public boolean updateReserveById(Reserve reserve) {
 		String sql = "update reserve set bookid = ?,borowerId = ?,reserveTime = ?,fetchTime = ?,status = ?,bookName = ? where reserveid = ?";
 		List<Object> lp = new ArrayList<Object>();
-		lp.add(reserve.getBookid());
+		lp.add(reserve.getselfId());
 		lp.add(reserve.getBorowerId());
 		lp.add(reserve.getReserveTime());
 		lp.add(reserve.getFetchTime());

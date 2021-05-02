@@ -10,12 +10,13 @@ public class Self {	//书架表
 	private String picture;	//图片路径
 	private String introduction;	//图书简介
 	private String publisher;	//出版社
+	private String typename;	//图书名称(为了便于页面显示而添加的,数据表中没有该字段)
 	public Self() {
 		super();
 	}
 	
 	public Self(String selfId, String bookname, String author, String publisherDate, int bookNum, int typeId,
-			String picture, String introduction, String publisher) {
+			String picture, String introduction, String publisher, String typename) {
 		super();
 		this.selfId = selfId;
 		this.bookname = bookname;
@@ -26,7 +27,9 @@ public class Self {	//书架表
 		this.picture = picture;
 		this.introduction = introduction;
 		this.publisher = publisher;
+		this.typename = typename;
 	}
+
 
 	public String getSelfId() {
 		return selfId;
@@ -81,5 +84,13 @@ public class Self {	//书架表
 	}
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
+	}
+
+	public String getTypename() {
+		return typename;
+	}
+
+	public void setTypename(String typename) {
+		this.typename = typename;
 	}
 }

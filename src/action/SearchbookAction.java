@@ -1,51 +1,65 @@
 package action;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.BookType;
 import bean.Self;
+import dao.BookTypeDao;
 import dao.SelfDao;
+import dao.impl.BookTypeDaoImpl;
 import dao.impl.SelfDaoImpl;
 import framework.Action;
 
 public class SearchbookAction implements Action {
 
+	String URL=null;
 	SelfDao sdao = new SelfDaoImpl();
+	BookTypeDao btDao=new BookTypeDaoImpl();
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
 		List<Self> ls =null;
-		int typeid = 0;
+		int typeid=0;
 		String bookname = null;
 		String publisher = null;
 		String author = null;
-
-		String c = req.getParameter("选择根据什么查询那个框框的name");
+		String keyword=null;
+		String c=req.getParameter("condition");
+		try {
+			keyword = new String(req.getParameter("keyword").getBytes("iso-8859-1"), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		System.out.println(keyword);
+		System.out.println(req.getParameter("condition"));
 		switch(c) {
-		case "图书类型":
-			String booktypeid = req.getParameter("填写框的name");
-			typeid = Integer.parseInt(booktypeid);
+		case "bookType":
+			BookType btype=btDao.findBookTypeByTyprid(keyword);
+			typeid=btype.getTypeId();
 			break;
-		case "图书名称":
-			bookname=req.getParameter("填写框的name");
+		case "bookName":
+			bookname=keyword;
 			break;
-		case "作者名":
-			author=req.getParameter("填写框的name");
+		case "author":
+			author=keyword;
 			break;
-		case "出版社名称":
-			publisher=req.getParameter("填写框的name");
+		case "pusher":
+			publisher=keyword;
 			break;
 		}
-		
 		ls = sdao.findBookBybookTypeId(typeid, bookname, publisher, author);
 		if(ls.size()>0) {
-			req.setAttribute("List<Self>", ls);
-			return "";
+			System.out.println(ls.get(0).getBookname());
+			req.setAttribute("searchList", ls);
+			URL="AcatalogSearch.jsp";
 		}else {
-			req.setAttribute("str", "查询结果为空！");
-			return "";
+			req.setAttribute("error", "查询结果为空！");
+			URL="AcatalogSearch.jsp";
 		}
+		return URL;
 	}
 
 }

@@ -347,7 +347,7 @@ h1.userpagetitle {
 						<c:forEach var="e" items="${reserveList}">
 							<tr>
 								<td>${e.reserveid}</td>
-								<td>${e.bookid}</td>
+								<td>${e.selfId}</td>
 								<td>${e.bookName}</td>
 								<td>${e.borowerId}</td>
 								<td>${e.reserveTime}</td>

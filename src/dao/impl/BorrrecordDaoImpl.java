@@ -59,7 +59,7 @@ public class BorrrecordDaoImpl extends BaseDao implements BorrrecordDao {
 				lp.add(borrrecordid);
 				lp.add(r.getBorowerId());
 				lp.add(returnFlag);
-				lp.add(r.getBookid());
+				lp.add(r.getselfId());
 				lp.add(borrTime);
 				lp.add(returnTime);
 				lp.add(aginBorr);

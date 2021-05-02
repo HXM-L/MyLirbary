@@ -33,7 +33,7 @@ public class Demo {
 	}
 	@Test
 	public void test04() {
-		System.out.println(selfDao.doSelf(new Self("01-03-B-06","童年","高尔基","2020.01",60,1,"F:","啦啦啦啦啦啦啦啦绿","清华大学出版社")));
+		System.out.println(selfDao.doSelf(new Self("01-03-B-06","童年","高尔基","2020.01",60,1,"F:","啦啦啦啦啦啦啦啦绿","清华大学出版社", null)));
 		System.out.println(bookDao.doBook(new Book("A-2","01-03-B-06","1")));
 	}
 	@Test
