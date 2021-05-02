@@ -7,6 +7,19 @@
 <meta charset="UTF-8">
 <title>入馆指南</title>
 <style>
+html{
+	width:100%;
+	height:100%;
+	background-image: url("./IMG/bg.jpg");
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+body{
+	width:100%;
+	height:100%;
+	margin:0px;
+	background-color:rgba(255,255,255,0.5);
+}
 #header {
 	width: 101%;
 	height: 50px;
@@ -137,6 +150,83 @@ a:hover {  color : blue ; }
 	color:red;
 	text-decoration: none;
 }
+.nav{
+	width:70%;
+	height:80%;
+	margin:20px auto;
+	background-color:rgba(255,255,255,0.6);
+}
+.nav>ul{
+	width:95%;
+	margin:0px auto;
+	padding:0px;
+	/* background-color:rgba(128,205,75,1.0); */
+}
+.nav>ul>li{
+	display:inline-block;
+	width:25%;
+	height:35px;
+	list-style: none;
+	line-height:35px;
+	font-size:29px;
+	font-family:"kaiti";
+	font-weight:700;
+	margin:-0px;
+	margin-right:-9px;
+	text-align:center;	
+	background-color:rgba(128,205,75,1.0);
+	user-select: none;
+	transition:all 1s;
+}
+.nav>ul>li:not(:last-child){	/*除去最后一个孩子*/
+	border-right:2px white solid;
+}
+
+.nav>ul>li:hover{
+	background-color:rgba(223,220,37,1.0);
+}
+#liSelect{
+	background-color:rgba(223,220,37,1.0);
+}
+.time{
+	box-sizing:border-box;
+	width: 70%;
+	height: 70%;
+	margin:50px auto;
+	padding-top:15px;
+	padding-left:20px;
+	border: 2px solid blue;
+	border-radius: 20px;
+}
+.time>ul>li{
+	box-sizing:border-box;
+	width:500px;
+	list-style: none;
+	font-size:20px;
+	line-height:30px;
+	verticle-align:middle;
+	margin-top: 10px;
+	padding-left:35px;
+}
+.time>ul>li:nth-of-type(1){
+	background-image: url("./IMG/clock.png");
+	background-repeat:no-repeat;
+	background-size: auto 90%;
+	 /* background-color: red; */
+}
+.time>ul>li:nth-of-type(2){
+	background-image: url("./IMG/certificates.png");
+	background-repeat:no-repeat;
+	background-size: auto 90%;
+	/* background-color: red; */
+}
+.time>ul>li:nth-of-type(3){
+	background-image: url("./IMG/tell.png");
+	background-repeat:no-repeat;
+	background-size: auto 90%;
+	/* background-color: red; */
+}
+
 </style>
 <script type="text/javascript">
 	var userID="";
@@ -190,18 +280,20 @@ a:hover {  color : blue ; }
 			<li><a href="ApersonalInfo.jsp" class="select">我的图书馆</a>
 		</ul>
 	</div>
-	<div  style="margin-left: 300px">
-		<form action="" class="formgroup">
-			<select style="height: 38px">
-				<option>请选择</option>
-				<option value="bookType" name="bookType">图书类型</option>
-				<option value="author" name="author">作者名</option>
-				<option value="bookName" name="bookName">图书名称</option>
-				<option value="pusher" name="pusher">出版社名称</option>
-			</select> 
-			<input class="form-control" placeholder="请输入关键字" type="text" name="pusher">
-			<input class="searchButton" type="submit" value="书目检索" />
-		</form>
+	<div class="nav">
+		<ul>
+			<li id="liSelect">服务时间</li>
+			<li>交通指南</li>
+			<li>入馆须知</li>
+			<li>无线使用</li>
+		</ul>
+		<div class="time">
+			<ul>
+				<li>服务时间：7：30-22：30（周一到周五、周日）</li>
+				<li>入馆证件：借书证、校园卡、身份证</li>
+				<li>咨询电话:86-759-3183226 86-759-3341440</li>
+			</ul>
+		</div>
 	</div>
 	
 </body>

@@ -7,6 +7,16 @@
 <meta charset="UTF-8">
 <title>读书指引</title>
 <style>
+html,body{
+	width: 100%;
+	height: 100%;
+}
+body{
+	width:100%;
+	height:100%;
+	margin:0px;
+	background-color:rgba(255,255,255,0.5);
+}
 #header {
 	width: 101%;
 	height: 50px;
@@ -137,6 +147,31 @@ a:hover {  color : blue ; }
 	color:red;
 	text-decoration: none;
 }
+.main{
+	box-sizing:border-box;
+	margin:0px;
+	padding:0px;
+	width:100%;
+	height: 100%;
+	/* background-color: rgba(223,220,37,0.4);  */
+}
+.main>h4{
+	margin-left: 55px;
+	margin-top: 3px;
+}
+.main>hr{
+	margin-top:-20px;
+}
+.main>p{
+	margin-top:-0px;
+	margin-left: 55px;
+}
+.main>div{
+	width:500px;
+	margin-left:55px;
+	border-top:2px dotted black;
+	border-bottom:2px dotted black;
+}
 </style>
 <script type="text/javascript">
 	var userID="";
@@ -190,18 +225,43 @@ a:hover {  color : blue ; }
 			<li><a href="ApersonalInfo.jsp" class="select">我的图书馆</a>
 		</ul>
 	</div>
-	<div  style="margin-left: 300px">
-		<form action="" class="formgroup">
-			<select style="height: 38px">
-				<option>请选择</option>
-				<option value="bookType" name="bookType">图书类型</option>
-				<option value="author" name="author">作者名</option>
-				<option value="bookName" name="bookName">图书名称</option>
-				<option value="pusher" name="pusher">出版社名称</option>
-			</select> 
-			<input class="form-control" placeholder="请输入关键字" type="text" name="pusher">
-			<input class="searchButton" type="submit" value="书目检索" />
-		</form>
+	<div class="main">
+		<h4>热门借阅</h4>
+		<hr>
+		<p>
+			<select style="height: 25px;border: 2px solid black;border-radius:6px">
+				<option value="0">图书排行</option>
+				<option value="1">读者排行</option>
+				<option value="2">单位排行</option>
+			</select>
+			<input type="month" style="border: 2px solid black;border-radius:6px"/>
+			分类号:
+			<select style="height: 25px;border: 2px solid black;border-radius:6px">
+					<option>请选择</option>
+					<c:forEach var="item" items="${typeList}">
+				       <option value="${item.typeId}">${item.name}</option>
+				    </c:forEach>
+			</select>
+			前
+			<select style="height: 25px;border: 2px solid black;border-radius:6px">
+				<option value="0">10</option>
+				<option value="1">20</option>
+				<option value="2">50</option>
+				<option value="2">200</option>
+			</select>
+			名
+			<input type="button" value="查询"/>
+			<input type="button" value="重置"/>
+		</p>
+		<div>
+			<ol>
+				<li>请根据需要选择排行类型</li>
+				<li>请选择适当的查询年份</li>
+				<li>输入分类号可查询某一类图书的出借排名情况</li>
+				<li>最多可返回200条符合限定条件的结果</li>
+			</ol>
+		</div>
+		
 	</div>
 	
 </body>

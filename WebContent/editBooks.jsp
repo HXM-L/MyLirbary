@@ -308,7 +308,7 @@ h1.userpagetitle {
 									<c:forEach var="item" items="${typeList}">
 								       <option value="${item.typeId}">${item.name}</option>
 								    </c:forEach>
-							</select>
+								</select>
 							</span>
 						</div>
 						<div class="infoline">

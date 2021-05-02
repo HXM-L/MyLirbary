@@ -7,6 +7,15 @@
 <meta charset="UTF-8">
 <title>读者荐购</title>
 <style>
+html,body{
+	width: 100%;
+	height: 100%;
+}
+body{
+	width:100%;
+	height:100%;
+	margin:0px;
+}
 #header {
 	width: 101%;
 	height: 50px;
@@ -137,6 +146,42 @@ a:hover {  color : blue ; }
 	color:red;
 	text-decoration: none;
 }
+.main{
+	box-sizing:border-box;
+	margin:0px;
+	padding:0px;
+	width:100%;
+	height: 100%;
+	font-size: 15px;
+	font-family: "SimSun";
+	font-weight: 500;
+	/* background-color: rgba(223,220,37,0.4);  */
+}
+.main>h4{
+	margin-left: 55px;
+	margin-top: 3px;
+	font-size: 20px;
+}
+.main>hr{
+	margin-top:-20px;
+}
+.main>span{
+	margin-left: 55px;
+	font-size: 18px;
+}
+.main>div{
+	width:900px;
+	margin:0px auto;
+	border-top:2px dotted black;
+	border-bottom:2px dotted black;
+}
+.main>ol{
+	margin-top:0px;
+	margin-left: 45px;
+}
+.redColor{
+	color:red;
+}
 </style>
 <script type="text/javascript">
 	var userID="";
@@ -190,18 +235,92 @@ a:hover {  color : blue ; }
 			<li><a href="ApersonalInfo.jsp" class="select">我的图书馆</a>
 		</ul>
 	</div>
-	<div  style="margin-left: 300px">
-		<form action="" class="formgroup">
-			<select style="height: 38px">
-				<option>请选择</option>
-				<option value="bookType" name="bookType">图书类型</option>
-				<option value="author" name="author">作者名</option>
-				<option value="bookName" name="bookName">图书名称</option>
-				<option value="pusher" name="pusher">出版社名称</option>
-			</select> 
-			<input class="form-control" placeholder="请输入关键字" type="text" name="pusher">
-			<input class="searchButton" type="submit" value="书目检索" />
-		</form>
+	<div class="main">
+		<h4>表单荐购</h4>
+		<hr>
+		<span>${User.name}</span>,您好!您可以通过下方的表单向图书馆推荐订购图书.推荐订购的注意事项如下:
+		<ol>
+			<li>推荐前请先进入馆藏检索，以了解本馆的收藏情况。</li>
+			<li>为方便馆员购书，请把目录信息尽可能输入齐备。<span  class="redColor">其中打"的项目是必填项目，打的是推荐填写项目。ISSNWSSM是国际标准书例号，是采法图书的重要信息。</span>请尽可能获得SENISS%信根并输入。</li>
+			<li>为了获得详细书目信息，便于馆员采选，可通过书名进行扩展检索。如:百度google豆瓣</li>
+			<li>输入信息后，请按“检索馆藏"项目，确认本馆的收藏情况。</li>
+		</ol>
+		<div>
+			<table>
+				<tr>
+					<td><span  class="redColor">**</span>书名:</td>
+					<td><input type="text"/></td>
+					<td><span  class="redColor">*</span>作者:</td>
+					<td><input type="text"/></td>
+				</tr>
+				<tr>
+					<td><span  class="redColor">*</span>ISBN:</td>
+					<td><input type="text"/></td>
+					<td><span  class="redColor">*</span>ISSN:</td>
+					<td><input type="text"/></td>
+				</tr>
+				<tr>
+					<td>类型:</td>
+					<td>
+						<select>
+							<option value="0">普通图书</option>
+							<option value="1">连续出版物</option>
+							<option value="2">非书资料</option>
+							<option value="3">测绘资料</option>
+							<option value="4">档案</option>
+							<option value="5">乐谱</option>
+							<option value="6">计算机文档</option>
+							<option value="7">古籍善本</option>
+						</select>
+					</td>
+					<td>语种:</td>
+					<td>
+						<select>
+							<option value="0">中文</option>
+							<option value="1">英文</option>
+							<option value="2">日语</option>
+							<option value="3">俄文</option>
+							<option value="4">法文</option>
+							<option value="5">其他</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>*出版社:</td>
+					<td><input type="text"/></td>
+					<td>出版日期:</td>
+					<td><input type="text"/></td>
+				</tr>
+				<tr>
+					<td>推荐原因:</td>
+					<td colspan="3"><textarea rows="" cols=""></textarea></td>
+				</tr>
+				<tr>
+					<td>注释:</td>
+					<td colspan="3"><textarea rows="" cols=""></textarea></td>
+				</tr>
+				<tr>
+					<td>扩展检索:</td>
+					<td colspan="3"><span class="redColor">请尽可能把目录信息输入齐备，为了获得详细书目信息，便于馆员采选，可通过书名进行扩展检索:</span>查百度google豆瓣</td>
+					
+				</tr>
+				<tr>
+					<td>希望的回复方式:</td>
+					<td colspan="3">
+						<input type="checkbox"/>MyLibrary
+						<input type="checkbox"/>Email
+						<input type="text"/>
+						<input type="checkbox"/>电话
+						<input type="tel"/>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="3"><input type="button" value="检索馆藏"/>（检索管内是否有符合条件的记录。再确认是否提交）</td>
+				</tr>
+			</table>
+		</div>
+		
 	</div>
 	
 </body>
