@@ -11,6 +11,7 @@ import dao.impl.ReserveDaoImpl;
 import framework.Action;
 
 public class OrderhistoryAction implements Action {
+	//用户查找预定图书记录
 
 	ReserveDao rdao = new ReserveDaoImpl();
 	@Override

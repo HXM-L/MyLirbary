@@ -14,6 +14,7 @@ import dao.impl.ReserveDaoImpl;
 import framework.Action;
 
 public class UpdateReserveAction implements Action {
+	//对预定记录的操作
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {	//修改一条预定记录

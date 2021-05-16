@@ -14,4 +14,6 @@ public interface SelfDao { // 书架表
 	public List<Self> findBookBybookTypeId(int typeid, String bookname, String publisher, String author);// 根据图书属性查询
 
 	public List<Self> findAllBook();// 查询所有图书
+	
+	public boolean upBookNumber(String selfId,int bookNum);//用户预定成功后对用图书的数量减少一
 }

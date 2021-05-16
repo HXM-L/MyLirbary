@@ -10,16 +10,14 @@ import dbc.BaseDao;
 public class ReserveDaoImpl extends BaseDao implements ReserveDao {
 
 	@Override
-	public boolean doReserve(Reserve r) {
+	public boolean doReserve(Reserve r) {	//添加一条预定 
 		boolean isFlag = false;
 		List<Object> lp =new ArrayList<Object>();
-		String sql ="insert into reserve values(?,?,?,?,?,?)";
+		String sql ="insert into reserve(selfId,bookName,borowerId,reserveTime) values(?,?,?,?)";
 		lp.add(r.getselfId());
+		lp.add(r.getBookName());
 		lp.add(r.getBorowerId());
 		lp.add(r.getReserveTime());
-		lp.add(r.getFetchTime());
-		lp.add(r.getStatus());
-		lp.add(r.getBookName());
 		isFlag = this.upadte(sql, lp);
 		return isFlag;
 	}

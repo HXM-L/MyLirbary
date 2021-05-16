@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>借阅记录</title>
+<title>预约记录</title>
 <style>
 #header {
 	width: 101%;

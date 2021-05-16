@@ -73,4 +73,13 @@ public class SelfDaoImpl extends BaseDao implements SelfDao {
 		}
 		return selfList;
 	}
+
+	@Override
+	public boolean upBookNumber(String selfId, int bookNum) {
+		List<Object> lp = new ArrayList<Object>();
+		String sql = "update self set bookNum = ? where selfId = ?";
+		lp.add(bookNum);
+		lp.add(selfId);
+		return this.upadte(sql, lp);
+	}
 }

@@ -202,6 +202,13 @@ a:hover {  color : blue ; }
 			  location.href="Searchbook.do?condition="+condition+"&keyword="+keyword;
 		  }
 	  }
+	function addOrder(selfId,bookname,userid){
+		console.log(selfId,bookname,userid);
+		if(selfId!=""){
+			location.href="AddOrder.do?selfId="+selfId+"&bookname="+bookname+"&userid="+userid;
+		} 
+		
+	}
 </script>
 </head>
 <body onload="getDay('${id}','${User.name}','${User.password}'),error()">
@@ -269,7 +276,7 @@ a:hover {  color : blue ; }
 								<td>${e.publisherDate}</td>
 								<td>${e.bookNum}</td>
 								<td>
-									<input type="button" value="预约" onclick="Modify(${e.selfId})" /> 
+									<input type="button" value="预约" onclick="addOrder('${e.selfId}','${e.bookname}','${id}')" /> 
 								</td>
 							</tr>
 						</c:forEach>
