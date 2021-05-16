@@ -54,7 +54,7 @@ public class ReserveDaoImpl extends BaseDao implements ReserveDao {
 
 	@Override
 	public boolean updateReserveById(Reserve reserve) {
-		String sql = "update reserve set bookid = ?,borowerId = ?,reserveTime = ?,fetchTime = ?,status = ?,bookName = ? where reserveid = ?";
+		String sql = "update reserve set selfId = ?,borowerId = ?,reserveTime = ?,fetchTime = ?,status = ?,bookName = ? where reserveid = ?";
 		List<Object> lp = new ArrayList<Object>();
 		lp.add(reserve.getselfId());
 		lp.add(reserve.getBorowerId());
