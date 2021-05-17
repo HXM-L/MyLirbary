@@ -197,37 +197,63 @@ a:hover {  color : blue ; }
 }
 .time{
 	box-sizing:border-box;
-	width: 70%;
-	height: 70%;
+	width: 80%;
+	height: 75%;
 	margin:50px auto;
-	padding-top:15px;
-	padding-left:20px;
+	padding:0px;
 	border: 2px solid blue;
 	border-radius: 20px;
 }
 .time>ul>li{
 	box-sizing:border-box;
-	width:500px;
+	width:360px;
+	float:left;
 	list-style: none;
 	font-size:20px;
 	line-height:30px;
 	verticle-align:middle;
-	margin-top: 10px;
-	padding-left:35px;
+	margin-top: 12px;
+	margin-bottom: 20px;
+	margin-right:45px;
+	padding-top:2px;
+	padding-left:60px;
+	border: 1px solid black;
 }
 .time>ul>li:nth-of-type(1){
-	background-image: url("./IMG/clock.png");
+	background-image: url("./IMG/wifi.png");
 	background-repeat:no-repeat;
-	background-size: auto 90%;
+	background-size: auto 75%;
+	background-position: 1% 55%;
 	 /* background-color: red; */
 }
 .time>ul>li:nth-of-type(2){
+	background-image: url("./IMG/cert.png");
+	background-repeat:no-repeat;
+	background-size: auto 80%;
+	background-position: 1% 55%;
+	/* background-color: red; */
+}
+.time>ul>li:nth-of-type(3){
+	background-image: url("./IMG/net.png");
+	background-repeat:no-repeat;
+	background-size: auto 90%;
+	background-position: 1% 55%;
+	/* background-color: red; */
+}
+.time>ul>li:nth-of-type(4){
+	background-image: url("./IMG/down.png");
+	background-repeat:no-repeat;
+	background-size: auto 70%;
+	background-position: 1% 55%;
+	/* background-color: red; */
+}
+.time>ul>li:nth-of-type(5){
 	background-image: url("./IMG/certificates.png");
 	background-repeat:no-repeat;
 	background-size: auto 90%;
 	/* background-color: red; */
 }
-.time>ul>li:nth-of-type(3){
+.time>ul>li:nth-of-type(6){
 	background-image: url("./IMG/tell.png");
 	background-repeat:no-repeat;
 	background-size: auto 90%;
@@ -294,16 +320,19 @@ a:hover {  color : blue ; }
 	</div>
 	<div class="nav">
 		<ul>
-			<li id="liSelect"><a  href="AentryGuide.jsp">服务时间</a></li>
+			<li><a  href="AentryGuide.jsp">服务时间</a></li>
 			<li><a  href="AentryGuide2.jsp">交通指南</a></li>
 			<li><a  href="AentryGuide3.jsp">入馆须知</a></li>
-			<li><a  href="AentryGuide4.jsp">无线使用</a></li>
+			<li id="liSelect"><a  href="AentryGuide4.jsp">无线使用</a></li>
 		</ul>
 		<div class="time">
 			<ul>
-				<li>服务时间：7：30-22：30（周一到周五、周日）</li>
-				<li>入馆证件：借书证、校园卡、身份证</li>
-				<li>咨询电话:86-759-3183226 86-759-3341440</li>
+				<li>目前在管内免费提供读者无线上网服务。</li>
+				<li>此项服务仅对持有效读者证的读者提供。</li>
+				<li>读者通过无线上网后，可以获得图书馆官网上各类服务。</li>
+				<li>请读者合理使用各类数字资源，不得恶意批量下载，违反将封号。</li>
+				<li>无线上网的账号采用读者申办读者证时所填写的证件号码。</li>
+				<li>咨询电话:0571-87988700<br/>投诉建议:0571-87988569</li>
 			</ul>
 		</div>
 	</div>

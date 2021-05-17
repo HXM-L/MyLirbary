@@ -196,44 +196,24 @@ a:hover {  color : blue ; }
 	background-color:rgba(223,220,37,1.0);
 }
 .time{
+	position:relative;
 	box-sizing:border-box;
 	width: 70%;
-	height: 70%;
+	height: 80%;
 	margin:50px auto;
-	padding-top:15px;
-	padding-left:20px;
+	padding:0px;
 	border: 2px solid blue;
+	/* background-image:url("./IMG/dt.jpg");
+	background-size:100% 100%;
+	background-repeat:no-repeat; */
 	border-radius: 20px;
 }
-.time>ul>li{
-	box-sizing:border-box;
-	width:500px;
-	list-style: none;
-	font-size:20px;
-	line-height:30px;
-	verticle-align:middle;
-	margin-top: 10px;
-	padding-left:35px;
+.time>img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
 }
-.time>ul>li:nth-of-type(1){
-	background-image: url("./IMG/clock.png");
-	background-repeat:no-repeat;
-	background-size: auto 90%;
-	 /* background-color: red; */
-}
-.time>ul>li:nth-of-type(2){
-	background-image: url("./IMG/certificates.png");
-	background-repeat:no-repeat;
-	background-size: auto 90%;
-	/* background-color: red; */
-}
-.time>ul>li:nth-of-type(3){
-	background-image: url("./IMG/tell.png");
-	background-repeat:no-repeat;
-	background-size: auto 90%;
-	/* background-color: red; */
-}
-
 </style>
 <script type="text/javascript">
 	var userID="";
@@ -294,17 +274,13 @@ a:hover {  color : blue ; }
 	</div>
 	<div class="nav">
 		<ul>
-			<li id="liSelect"><a  href="AentryGuide.jsp">服务时间</a></li>
-			<li><a  href="AentryGuide2.jsp">交通指南</a></li>
+			<li><a  href="AentryGuide.jsp">服务时间</a></li>
+			<li  id="liSelect"><a  href="AentryGuide2.jsp">交通指南</a></li>
 			<li><a  href="AentryGuide3.jsp">入馆须知</a></li>
 			<li><a  href="AentryGuide4.jsp">无线使用</a></li>
 		</ul>
 		<div class="time">
-			<ul>
-				<li>服务时间：7：30-22：30（周一到周五、周日）</li>
-				<li>入馆证件：借书证、校园卡、身份证</li>
-				<li>咨询电话:86-759-3183226 86-759-3341440</li>
-			</ul>
+			<img alt="地图" src="./IMG/dt.jpg">
 		</div>
 	</div>
 	
