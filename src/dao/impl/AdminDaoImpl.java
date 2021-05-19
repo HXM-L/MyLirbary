@@ -28,4 +28,14 @@ public class AdminDaoImpl extends BaseDao implements AdminDao {
 		return this.upadte(sql, lp);
 	}
 
+	@Override
+	public boolean updateAdminPwd(String id, String name, String password) {
+		String sql = "update admin set name =?,password=? where id=?";
+		List<Object> lp = new ArrayList<Object>();
+		lp.add(name);
+		lp.add(password);
+		lp.add(id);
+		return this.upadte(sql, lp);
+	}
+
 }

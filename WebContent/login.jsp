@@ -75,7 +75,7 @@
 			alert(str);
 		}
 	}
-	<%String error = (String) request.getAttribute("str");%>
+	<%String error = (String) request.getAttribute("error");%>
 	function error(){
 		var error = '<%=error%>';
 		if (error != "null") {

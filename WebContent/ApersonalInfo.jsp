@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>主页</title>
+<title>个人信息</title>
 <style>
 html,body{
 	width: 100%;
@@ -252,9 +252,9 @@ h1.userpagetitle {
 					欢迎您，${User.name}
 					<div id="userpagemenu">
 						<ul style="list-style-type: none">
-							<li><a class="" href="personalInfo.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
+							<li><a class="" href="ApersonalInfo.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
 							</li>
-							<li><a class="" href="updatePwd.jsp">修改密码</a></li>
+							<li><a class="" href="AupdatePwd.jsp">修改密码</a></li>
 							<li><a class="" href="orderhistory.jsp">预约图书信息</a></li>
 							<li><a class="" href="borrowing.jsp">当前借阅情况和续借</a></li>
 							<li><a class="" href="urgeReturn.jsp">催还图书信息</a></li>
