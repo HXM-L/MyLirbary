@@ -13,21 +13,21 @@ public class BorrowerDaoImpl extends BaseDao implements BorrowerDao {
 	public Borrower findBorrower(String borrowerId, String password, int type) {
 		String sql="select * from borrower where borrowerId=" + borrowerId + "and password="+ password + "and identityId=" + type;
 		if(this.query(sql, new ArrayList<Object>(), Borrower.class).size()==0) {
-			//这个地方只能用size来判断，如果判断是否为null的话会报错的，因为list集合本身是不会为null的
+			//这个地方只能用size来判断，如果判断是否为null的话会报错的，因为list集合本身是不会为null
 			return null;
 		}
 		return (Borrower) this.query(sql, new ArrayList<Object>(), Borrower.class).get(0);
 	}
 
 	@Override
-	public boolean updateBorrower(String borrowerId,String name,String password,String phone) {
+	public boolean updateBorrower(Borrower borrower) {
 		boolean isFlag = false;
-		String sql = "update borrower set name =?,password=?,phone=? where borrowerId=?";
+		String sql = "update borrower set name =?,remarks=?,phone=? where borrowerId=?";
 		List<Object> lp = new ArrayList<Object>();
-		lp.add(name);
-		lp.add(password);
-		lp.add(phone);
-		lp.add(borrowerId);
+		lp.add(borrower.getName());
+		lp.add(borrower.getRemarks());
+		lp.add(borrower.getPhone());
+		lp.add(borrower.getBorrowerId());
 		isFlag = this.upadte(sql, lp);
 		return isFlag;
 	}

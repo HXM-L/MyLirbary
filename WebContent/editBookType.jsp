@@ -279,7 +279,7 @@ h1.userpagetitle
 							 <a class="select" href="urgeReturn.jsp">催还图书信息</a>
 						</li>
 						<li>
-							<a class="select" href="booksborrowedhistory.jsp">我的借阅历史</a>
+							<a class="select" href="booksborrowedhistory.jsp">管理读者信息</a>
 						</li>
 						<li>
 							<a class="select" href="#">退出登录</a>

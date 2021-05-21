@@ -28,7 +28,7 @@ public class PersonalInfoAction implements Action {	//修改信息
 			req.setAttribute("str", "密码不能为空！");
 			password=b.getPassword();
 		}
-		boolean isFlag = bdao.updateBorrower(bid, name,password,phone);
+		boolean isFlag = bdao.updateBorrower(bid, name,password);
 		req.setAttribute("isFlag", isFlag);
 		return "";
 	}

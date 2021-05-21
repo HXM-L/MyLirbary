@@ -275,7 +275,7 @@ input[type=submit],input[type=button]{
 							<li><a class="select" href="orderhistory.jsp">预约图书信息</a></li>
 							<li><a class="select" href="borrowing.jsp">当前借阅情况和续借</a></li>
 							<li><a class="select" href="urgeReturn.jsp">催还图书信息</a></li>
-							<li><a class="select" href="booksborrowedhistory.jsp">我的借阅历史</a>
+							<li><a class="select" href="booksborrowedhistory.jsp">管理读者信息</a>
 							</li>
 							<li><a class="select" href="#">退出登录</a></li>
 						</ul>

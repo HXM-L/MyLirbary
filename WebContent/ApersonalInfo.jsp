@@ -289,9 +289,13 @@ h1.userpagetitle {
 								${User.money}</span>
 						</div>
 						<div class="infoline">
+							<span class="infoleft">电话：</span> <span class="inforight">
+								${User.phone}</span>
+						</div>
+						<div class="infoline">
 							<span class="infoleft"> 
-							<a href="update.jsp"></a>
-							<input type="button" name="updateInfo" value="修改" /></span>
+							<a href="AUpdatepersonalInfo.jsp">
+							<input type="button" name="updateInfo" value="修改" /></a></span>
 						</div>
 
 					</div>

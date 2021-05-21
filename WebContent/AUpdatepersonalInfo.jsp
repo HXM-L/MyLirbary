@@ -1,11 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>我的图书馆</title>
+<meta charset="UTF-8">
+<title>修改个人信息</title>
+<script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
 <style>
+html,body{
+	width: 100%;
+	height: 100%;
+}
+body{
+	width:100%;
+	height:100%;
+	margin:0px;
+}
 #header {
 	width: 101%;
 	height: 50px;
@@ -70,7 +81,7 @@
 }
 
 .select {
-	font-size: 13px;
+	font-size: 18px;
 	color: #000000;
 	text-decoration: none;
 	float: left;
@@ -143,13 +154,7 @@ a:hover {
 	margin-left: -70px;
 }
 
-.select {
-	font-size: 16px;
-	color: #000000;
-	text-decoration: none;
-	float: left;
-	margin-left: 20px
-}
+
 
 #content {
 	min-height: 500px;
@@ -164,7 +169,7 @@ a:hover {
 }
 
 h1.userpagetitle {
-	/* font-size:14px; */
+	font-size: 14px;
 	padding-bottom: 12px;
 	margin-bottom: 15px;
 	padding-right: 4px;
@@ -192,21 +197,19 @@ h1.userpagetitle {
 #userInfoContent .infoline .inforight {
 	margin-left: 15px;
 }
+#userpagemenu>ul>li>a{
+	font-size: 16px;
+	color: #000000;
+	text-decoration: none;
+	float: left;
+	margin-left: 20px
+}
 </style>
 <script type="text/javascript">
-	var userID="";
-	var userName="";
-	var userPwd="";
 	function exit() {
 		location.href = "exit.do";
 	}
-	function getDay(id,name,pwd) {
-		userID=id;
-		userName=name;
-		userPwd=pwd;
-		console.log(id) 
-		console.log(name) 
-		console.log(pwd) 
+	function getDay() {
 		let today = "";
 		let arry = [ '日', '一', '二', '三', '四', '五', '六' ];
 		let now = new Date();
@@ -216,6 +219,7 @@ h1.userpagetitle {
 		let week = now.getDay(); //获取当前星期X(0-6,0代表星期天)
 		today += year + "年" + month + "月" + day + "日 星期" + arry[week];
 		document.getElementById("day").value = today;
+		/* console.log(today); */
 		document.getElementById("day").innerHTML = today;
 	}
 	<%String error = (String) request.getAttribute("updateFlag");%>
@@ -225,9 +229,24 @@ h1.userpagetitle {
 			alert(error);
 		}
 	}
+	$(function (){
+		//获取所有option对象,返回一个数组
+		    var $optArr=$("option");
+		    //遍历数组获取每一个option对象
+		    console.log(<%=session.getAttribute("IdentityId")%>);
+		    $optArr.each(function (index,element) {
+		        //获取option对象的value值,和data中的did比较
+		        if(element.value==<%=session.getAttribute("IdentityId")%>){
+		            $(element).prop("selected",true);
+		            console.log(element.value);
+		        }
+		        console.log(element.value);
+		    });
+	 });
+	
 </script>
 </head>
-<body onload="getDay('${id}','${User.name}','${User.password}'),error()">
+<body onload="getDay();error();">
 	<div id="header">
 		<div id="headertext">岭南师范学院图书馆书目检索系统</div>
 		<div>
@@ -241,11 +260,11 @@ h1.userpagetitle {
 	</div>
 	<div id="search">
 		<ul style="list-style: none;">
-			<li><a href="editBooks.jsp" class="select">图书管理</a></li>
-			<li><a href="editBookType.jsp" class="select">图书分类管理</a></li>
-			<li><a href="borrowRecord.jsp" class="select">图书借阅信息</a></li>
-			<li><a href="admin.jsp" class="select">报表导出</a></li>
-			<li><a href="admin.jsp" class="select">购置图书</a>
+			<li><a href="AcatalogSearch.jsp" class="select">目录检索</a></li>
+			<li><a href="AentryGuide.jsp" class="select">入馆指南</a></li>
+			<li><a href="AreadingGuide.jsp" class="select">读书指引</a></li>
+			<li><a href="ARecommendation.jsp" class="select">读者荐购</a></li>
+			<li><a href="ApersonalInfo.jsp" class="select">我的图书馆</a>
 		</ul>
 	</div>
 	<div id="content" class="clearFix">
@@ -255,49 +274,60 @@ h1.userpagetitle {
 					欢迎您，${User.name}
 					<div id="userpagemenu">
 						<ul style="list-style-type: none">
-							<li><a class="select" href="admin.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
+							<li><a class="" href="ApersonalInfo.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
 							</li>
-							<li><a class="select" href="updatePwd.jsp">修改密码</a></li>
-
-							<li><a class="select" href="orderhistory.jsp">预约图书信息</a></li>
-							<li><a class="select" href="borrowing.jsp">当前借阅情况和续借</a></li>
-							<li><a class="select" href="urgeReturn.jsp">催还图书信息</a></li>
-							<li><a class="select" href="booksborrowedhistory.jsp">管理读者信息</a>
+							<li><a class="" href="AupdatePwd.jsp">修改密码</a></li>
+							<li><a class="" href="orderhistory.jsp">预约图书信息</a></li>
+							<li><a class="" href="borrowing.jsp">当前借阅情况和续借</a></li>
+							<li><a class="" href="urgeReturn.jsp">催还图书信息</a></li>
+							<li><a class="" href="booksborrowedhistory.jsp">我的借阅历史</a>
 							</li>
-							<li><a class="select" href="#">退出登录</a></li>
+							<li><a class="" href="#">退出登录</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<div id="UserMasterRight">
-				<form action="updateInfo.do" method="post">
-					<div class="changepassowrd">
-						<h2 class="userpagetitle">修改管理员信息</h2>
-						<div class="userpagecontent">
-							<div class="infoline">
-								<span class="infoleft">管理员ID:${id}</span> <span
-									class="inforight"></span>
-							</div>
-							<br />
-							<div class="infoline">
-								<span class="infoleft">姓 名:</span> <span class="inforight">
-									<input class="txtInput" type="text" name="username"
-									value="${User.name}" />
-								</span>
-							</div>
-							<br />
-							<div class="infoline">
-								<span class="infoleft">电 话:</span> <span class="inforight">
-									<input id="newPwd" class="txtInput" type="text" name="phone"
-									value="${User.phone}" />
-								</span>
-							</div>
-							<br />
-							<div class="infoline">
-								<span class="infoleft"> <input class="txtInput"
-									type="submit" value="提交">
-								</span>
-							</div>
+				<form id="" action="updateInfo.do" method="post">
+					<h1 class="userpagetitle">修改个人信息</h1>
+					<div id="userInfoContent">
+						<div class="infoline">
+							<span class="infoleft">证 号：</span> <span class="inforight">${User.borrowerId}</span>
+						</div>
+						<div class="infoline">
+							<span class="infoleft">姓 名：</span> <span class="inforight">
+							<input class="txtInput" type="text" name="username" value="${User.name}" />
+							</span>
+						</div>
+						<div class="infoline">
+							<span class="infoleft">类 型：</span> <span class="inforight">
+							<select style="height: 38px" name="type" disabled="disabled">
+								<c:forEach var="item" items="${idList}">
+							       <option value="${item.identityId}">${item.name}</option>
+							    </c:forEach>
+							</select>
+							</span>
+						</div>
+						<div class="infoline">
+							<span class="infoleft">当前状态：</span> <span class="inforight">
+							<input class="txtInput" type="text" name="status" value="${User.status}" disabled="disabled"/></span>
+						</div>
+						<div class="infoline">
+							<span class="infoleft">备 注：</span> <span class="inforight">
+							<input class="txtInput" type="text" name="remarks" value="${User.remarks}" /></span>
+						</div>
+						<div class="infoline">
+							<span class="infoleft">您的预存金额：</span> <span class="inforight">
+							<input class="txtInput" type="text" name="money" value="${User.money}" disabled="disabled"/></span>
+						</div>
+						<div class="infoline">
+							<span class="infoleft">电话：</span> <span class="inforight">
+							<input class="txtInput" type="text" name="phone" value="${User.phone}" /></span>
+						</div>
+						<div class="infoline">
+							<span class="infoleft"> <input class="txtInput"
+								type="submit" value="提交">
+							</span>
 						</div>
 					</div>
 				</form>
@@ -305,6 +335,5 @@ h1.userpagetitle {
 		</div>
 
 	</div>
-
 </body>
 </html>

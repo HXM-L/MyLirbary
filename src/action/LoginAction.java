@@ -10,14 +10,17 @@ import bean.Admin;
 import bean.BookType;
 import bean.Borrower;
 import bean.BuyBook;
+import bean.Identity;
 import dao.AdminDao;
 import dao.BookTypeDao;
 import dao.BorrowerDao;
 import dao.BuyBookDao;
+import dao.IdentityDao;
 import dao.impl.AdminDaoImpl;
 import dao.impl.BookTypeDaoImpl;
 import dao.impl.BorrowerDaoImpl;
 import dao.impl.BuyBookDaoImpl;
+import dao.impl.IdentityDaoImpl;
 import framework.Action;
 
 public class LoginAction implements Action {	//登录操作
@@ -34,9 +37,13 @@ public class LoginAction implements Action {	//登录操作
 		
 		//查询图书类型
 		BookTypeDao typeDao=new BookTypeDaoImpl();
+		IdentityDao idDao=new IdentityDaoImpl();
 		List<BookType> typeList=typeDao.findAllType();
+		List<Identity> idList=idDao.findAllIdentity();
 		System.out.println(typeList.get(0).getName());
+		System.out.println(idList.get(0).getName());
 		session.setAttribute("typeList", typeList);
+		session.setAttribute("idList", idList);
 		
 		
 		if(loginType==1) {
@@ -56,6 +63,10 @@ public class LoginAction implements Action {	//登录操作
 				session.setAttribute("UserType", "B");
 				session.setAttribute("id", borrower.getBorrowerId());
 				session.setAttribute("User", borrower);
+				req.setAttribute("IdentityId",borrower.getIdentityId());
+				session.setAttribute("IdentityId", borrower.getIdentityId());
+				System.out.println(borrower.getPhone());
+				System.out.println(borrower.getIdentityId());
 				returnJsp= "ApersonalInfo.jsp";
 			}else {
 				req.setAttribute("str","用户名或密码错误!");
