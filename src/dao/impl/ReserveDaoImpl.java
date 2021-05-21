@@ -64,4 +64,9 @@ public class ReserveDaoImpl extends BaseDao implements ReserveDao {
 		return this.upadte(sql, lp);
 	}
 
+	@Override
+	public List<Reserve> findReseRecord(String userID) {
+		return this.query("select * from reserve where borowerId="+userID, new ArrayList<Object>(), Reserve.class);
+	}
+
 }

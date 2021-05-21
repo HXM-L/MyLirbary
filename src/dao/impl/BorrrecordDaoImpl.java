@@ -128,7 +128,7 @@ public class BorrrecordDaoImpl extends BaseDao implements BorrrecordDao {
 	public List<Borrrecord> findNowRecordByBorrowerId(String borrowerId) {
 		List<Borrrecord> lb = null;
 		List<Object> lp = new ArrayList<Object>();
-		String sql = "select * from borrrecord where borrowerId = ? and returnFlag = 0";
+		String sql = "select * from borrrecord where borrowerId = ? and returnFlag = '·ñ'";
 		lp.add(borrowerId);
 		lb = this.query(sql, lp, Borrrecord.class);
 		return lb;

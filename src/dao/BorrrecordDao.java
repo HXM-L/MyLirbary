@@ -11,7 +11,7 @@ public interface BorrrecordDao {
 
 	public List<Borrrecord> findRecordByBorrower();// 查询所有借阅历史
 
-	public List<Borrrecord> findNowRecordByBorrowerId(String borrowerId);// 查询的当前的借阅
+	public List<Borrrecord> findNowRecordByBorrowerId(String borrowerId);// 查询的指定读者当前的借阅
 
 	public List<Borrrecord> findOvertimeByBorrowerId(String borrowerId);// 浏览超期图书
 

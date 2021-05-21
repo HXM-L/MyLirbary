@@ -255,10 +255,10 @@ h1.userpagetitle {
 							<li><a class="" href="ApersonalInfo.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
 							</li>
 							<li><a class="" href="AupdatePwd.jsp">修改密码</a></li>
-							<li><a class="" href="orderhistory.jsp">预约图书信息</a></li>
-							<li><a class="" href="borrowing.jsp">当前借阅情况和续借</a></li>
-							<li><a class="" href="urgeReturn.jsp">催还图书信息</a></li>
-							<li><a class="" href="booksborrowedhistory.jsp">我的借阅历史</a>
+							<li><a class="" href="Aorderhistory.jsp">预约图书信息</a></li>
+							<li><a class="" href="Aborrowing.jsp">当前借阅情况和续借</a></li>
+							<li><a class="" href="AurgeReturn.jsp">催还图书信息</a></li>
+							<li><a class="" href="Abooksborrowedhistory.jsp">我的借阅历史</a>
 							</li>
 							<li><a class="" href="#">退出登录</a></li>
 						</ul>

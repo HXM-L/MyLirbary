@@ -1,11 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>管理读者信息</title>
+<meta charset="UTF-8">
+<title>个人信息</title>
 <style>
+html,body{
+	width: 100%;
+	height: 100%;
+}
+body{
+	width:100%;
+	height:100%;
+	margin:0px;
+}
 #header {
 	width: 101%;
 	height: 50px;
@@ -70,7 +80,7 @@
 }
 
 .select {
-	font-size: 13px;
+	font-size: 18px;
 	color: #000000;
 	text-decoration: none;
 	float: left;
@@ -143,13 +153,7 @@ a:hover {
 	margin-left: -70px;
 }
 
-.select {
-	font-size: 16px;
-	color: #000000;
-	text-decoration: none;
-	float: left;
-	margin-left: 20px
-}
+
 
 #content {
 	min-height: 500px;
@@ -192,21 +196,19 @@ h1.userpagetitle {
 #userInfoContent .infoline .inforight {
 	margin-left: 15px;
 }
+#userpagemenu>ul>li>a{
+	font-size: 16px;
+	color: #000000;
+	text-decoration: none;
+	float: left;
+	margin-left: 20px
+}
 </style>
 <script type="text/javascript">
-	var userID = "";
-	var userName = "";
-	var userPwd = "";
 	function exit() {
 		location.href = "exit.do";
 	}
-	function getDay(id, name, pwd) {
-		userID = id;
-		userName = name;
-		userPwd = pwd;
-		console.log(id)
-		console.log(name)
-		console.log(pwd)
+	function getDay() {
 		let today = "";
 		let arry = [ '日', '一', '二', '三', '四', '五', '六' ];
 		let now = new Date();
@@ -216,12 +218,26 @@ h1.userpagetitle {
 		let week = now.getDay(); //获取当前星期X(0-6,0代表星期天)
 		today += year + "年" + month + "月" + day + "日 星期" + arry[week];
 		document.getElementById("day").value = today;
+		/* console.log(today); */
 		document.getElementById("day").innerHTML = today;
 
 	}
+	
+	<%String error = (String) request.getAttribute("updateFlag");%>
+	function error(){
+		var error = '<%=error%>';
+		if (error != "null") {
+			alert(error);
+		}
+	}
+	
+	function searchRecord() {
+		location.href = "finRecord.do?findURL=Aborrowing.jsp";
+	}
+	
 </script>
 </head>
-<body onload="getDay('${id}','${User.name}','${User.password}')">
+<body onload="getDay();error();">
 	<div id="header">
 		<div id="headertext">岭南师范学院图书馆书目检索系统</div>
 		<div>
@@ -235,11 +251,11 @@ h1.userpagetitle {
 	</div>
 	<div id="search">
 		<ul style="list-style: none;">
-			<li><a href="editBooks.jsp" class="select">图书管理</a></li>
-			<li><a href="editBookType.jsp" class="select">图书分类管理</a></li>
-			<li><a href="borrowRecord.jsp" class="select">图书借阅信息</a></li>
-			<li><a href="admin.jsp" class="select">报表导出</a></li>
-			<li><a href="admin.jsp" class="select">购置图书</a>
+			<li><a href="AcatalogSearch.jsp" class="select">目录检索</a></li>
+			<li><a href="AentryGuide.jsp" class="select">入馆指南</a></li>
+			<li><a href="AreadingGuide.jsp" class="select">读书指引</a></li>
+			<li><a href="ARecommendation.jsp" class="select">读者荐购</a></li>
+			<li><a href="ApersonalInfo.jsp" class="select">我的图书馆</a>
 		</ul>
 	</div>
 	<div id="content" class="clearFix">
@@ -249,43 +265,54 @@ h1.userpagetitle {
 					欢迎您，${User.name}
 					<div id="userpagemenu">
 						<ul style="list-style-type: none">
-							<li><a class="select" href="admin.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
+							<li><a class="" href="ApersonalInfo.jsp">个人信息&nbsp;&nbsp;&nbsp;</a>
 							</li>
-							<li><a class="select" href="updatePwd.jsp">修改密码</a></li>
-
-							<li><a class="select" href="orderhistory.jsp">预约图书信息</a></li>
-							<li><a class="select" href="borrowing.jsp">当前借阅情况和续借</a></li>
-							<li><a class="select" href="urgeReturn.jsp">催还图书信息</a></li>
-							<li><a class="select" href="booksborrowedhistory.jsp">管理读者信息</a>
+							<li><a class="" href="AupdatePwd.jsp">修改密码</a></li>
+							<li><a class="" href="Aorderhistory.jsp">预约图书信息</a></li>
+							<li><a class="" href="Aborrowing.jsp">当前借阅情况和续借</a></li>
+							<li><a class="" href="AurgeReturn.jsp">催还图书信息</a></li>
+							<li><a class="" href="Abooksborrowedhistory.jsp">我的借阅历史</a>
 							</li>
-							<li><a class="select" href="#">退出登录</a></li>
+							<li><a class="" href="#">退出登录</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<div id="UserMasterRight">
-				<form action="" method="post">
-					<h1 class="userpagetitle">管理读者信息</h1>
-					<div style="width: 900px">
-						<table class="tb" cellpadding="7" border="1">
-							<thead class="tbhead">
-								<tr>
-									<td width="10%">借期</td>
-									<td width="10%">还期</td>
-									<td width="45%">书名</td>
-									<td width="45%">作者</td>
-									<td width="45%">图书类型</td>
-									<td width="20%">图书ID号</td>
-								</tr>
-							</thead>
-						</table>
-						<br /> <input type="submit" value="续借" />
-					</div>
-				</form>
+				<h1 class="userpagetitle">图书借阅信息</h1>
+				<input type="button" value="查询" onclick="searchRecord()" /><br />
+				<table class="tb" cellpadding="7" border="1" width="1250px"
+					cellspacing="0">
+					<thead class="tbhead">
+						<tr>
+							<th>借阅记录号</th>
+							<th>图书ID号</th>
+							<th>图书名称</th>
+							<th>读者账号</th>
+							<th>借阅日期</th>
+							<th>还书日期</th>
+							<th>续借</th>
+							<th>超期</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="e" items="${borrowinglist}">
+							<tr>
+								<td>${e.borrRecordId}</td>
+								<td>${e.bookid}</td>
+								<td>${e.bookName}</td>
+								<td>${e.borrowerId}</td>
+								<td>${e.borrTime}</td>
+								<td>${e.returnTime}</td>
+								<td>${e.aginBorr}</td>
+								<td>${e.overTime}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
 
 	</div>
-
 </body>
 </html>

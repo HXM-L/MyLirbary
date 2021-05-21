@@ -41,6 +41,14 @@ public class DeleteAction implements Action {// 所有删除操作
 				req.setAttribute("updateFlag", "删除失败");
 			}
 			URL="orderhistory.jsp";
+		}else if (req.getParameter("AppointPage").equals("Aorderhistory.jsp")) {	//删除一条指定ID的预定记录
+			ReserveDao reserveDao=new ReserveDaoImpl();
+			if (reserveDao.deleteReserveRecord(Integer.parseInt(req.getParameter("rID")))) {
+				req.setAttribute("updateFlag", "取消成功");
+			} else {
+				req.setAttribute("updateFlag", "取消失败");
+			}
+			URL="Aorderhistory.jsp";
 		}else if (req.getParameter("AppointPage").equals("urgeReturn")) {	//删除一条指定ID的借阅记录
 			BorrrecordDao BRecord = new BorrrecordDaoImpl();
 			if (BRecord.deleteRecord(req.getParameter("rID"))) {
@@ -51,7 +59,6 @@ public class DeleteAction implements Action {// 所有删除操作
 			URL="urgeReturn.jsp";
 		}
 
-		System.out.println("kkkkk");
 		return URL;
 	}
 
