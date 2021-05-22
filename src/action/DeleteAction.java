@@ -7,9 +7,11 @@ import bean.Borrrecord;
 import dao.BorrrecordDao;
 import dao.BuyBookDao;
 import dao.ReserveDao;
+import dao.SelfDao;
 import dao.impl.BorrrecordDaoImpl;
 import dao.impl.BuyBookDaoImpl;
 import dao.impl.ReserveDaoImpl;
+import dao.impl.SelfDaoImpl;
 import framework.Action;
 
 public class DeleteAction implements Action {// 所有删除操作
@@ -43,7 +45,10 @@ public class DeleteAction implements Action {// 所有删除操作
 			URL="orderhistory.jsp";
 		}else if (req.getParameter("AppointPage").equals("Aorderhistory.jsp")) {	//删除一条指定ID的预定记录
 			ReserveDao reserveDao=new ReserveDaoImpl();
+			SelfDao selfDao=new SelfDaoImpl();
 			if (reserveDao.deleteReserveRecord(Integer.parseInt(req.getParameter("rID")))) {
+				int bookNum = selfDao.findBookBySelfId(req.getParameter("selfId")).getBookNum()+1;
+				selfDao.upBookNumber(req.getParameter("selfId"), bookNum);
 				req.setAttribute("updateFlag", "取消成功");
 			} else {
 				req.setAttribute("updateFlag", "取消失败");

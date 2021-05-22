@@ -15,10 +15,10 @@ import dbc.BaseDao;
 public class BorrrecordDaoImpl extends BaseDao implements BorrrecordDao {
 
 	@Override
-	public Borrrecord findRecordByBorrowerId(String borrowerId) {
+	public Borrrecord findRecordByBorrowerId(String borrRecordId) {
 		List<Object> lp = new ArrayList<Object>();
 		String sql = "select * from borrrecord where borrRecordId = ?";
-		lp.add(borrowerId);
+		lp.add(borrRecordId);
 		Borrrecord record=(Borrrecord) this.query(sql, lp, Borrrecord.class).get(0);
 		return record;
 	}
@@ -126,21 +126,16 @@ public class BorrrecordDaoImpl extends BaseDao implements BorrrecordDao {
 
 	@Override
 	public List<Borrrecord> findNowRecordByBorrowerId(String borrowerId) {
-		List<Borrrecord> lb = null;
 		List<Object> lp = new ArrayList<Object>();
 		String sql = "select * from borrrecord where borrowerId = ? and returnFlag = '·ñ'";
 		lp.add(borrowerId);
-		lb = this.query(sql, lp, Borrrecord.class);
-		return lb;
+		return this.query(sql, lp, Borrrecord.class);
 	}
 
 	@Override
-	public List<Borrrecord> findRecordByBorrower() {
-		List<Borrrecord> lb = null;
-		List<Object> lp = new ArrayList<Object>();
-		String sql = "select * from borrrecord";
-		lb = this.query(sql, lp, Borrrecord.class);
-		return lb;
+	public List<Borrrecord> findRecordByBorrower(String borrowerId) {
+		String sql = "select * from borrrecord where returnFlag ='·ñ' and overTime='ÊÇ'  and borrowerId="+borrowerId;
+		return this.query(sql, new ArrayList<Object>(), Borrrecord.class);
 	}
 
 	@Override
@@ -179,5 +174,17 @@ public class BorrrecordDaoImpl extends BaseDao implements BorrrecordDao {
 		List<Object> lp = new ArrayList<Object>();
 		String sql = "select * from borrrecord where returnFlag='·ñ' and overTime='ÊÇ'";
 		return this.query(sql, lp, Borrrecord.class);
+	}
+
+	@Override
+	public List<Borrrecord> findAllRecords() {
+		String sql = "select * from borrrecord";
+		return this.query(sql, new ArrayList<Object>(), Borrrecord.class);
+	}
+
+	@Override
+	public List<Borrrecord> findAllRecords(String borrowerId) {
+		String sql = "select * from borrrecord where borrowerId="+borrowerId;
+		return this.query(sql, new ArrayList<Object>(), Borrrecord.class);
 	}
 }

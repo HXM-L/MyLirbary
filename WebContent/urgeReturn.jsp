@@ -224,6 +224,9 @@ h1.userpagetitle {
 	top: 150px;
 	border: 2px;
 }
+.tbodyColor{
+	color:red;
+}
 </style>
 <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -323,7 +326,7 @@ h1.userpagetitle {
 			<div id="UserMasterRight">
 				<h1 class="userpagetitle">图书借阅信息</h1>
 				<input type="button" value="查询" onclick="searchRecord()" /><br />
-				<table class="tb" cellpadding="7" border="1" width="1250px"
+				<table class="" cellpadding="7" border="1" width="1250px"
 					cellspacing="0">
 					<thead class="tbhead">
 						<tr>
@@ -338,7 +341,7 @@ h1.userpagetitle {
 							<th>操作</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="tbodyColor">
 						<c:forEach var="e" items="${UrgeList}">
 							<tr>
 								<td>${e.borrRecordId}</td>

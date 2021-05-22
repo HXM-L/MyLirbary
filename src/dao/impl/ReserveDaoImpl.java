@@ -69,4 +69,13 @@ public class ReserveDaoImpl extends BaseDao implements ReserveDao {
 		return this.query("select * from reserve where borowerId="+userID, new ArrayList<Object>(), Reserve.class);
 	}
 
+	@Override
+	public List<Reserve> findReseRecord(String userID, String selfId) {
+		List<Object> lp = new ArrayList<Object>();
+		String sql = "select * from [mylibrary].[dbo].[reserve] where borowerId=? and selfId=?";
+		lp.add(userID);
+		lp.add(selfId);
+		return this.query(sql, lp, Reserve.class);
+	}
+
 }

@@ -19,4 +19,6 @@ public interface ReserveDao { // 预定记录表的操作
 	public boolean deleteReserveRecord(int reserveid);	//删除一条预定记录
 	
 	public boolean updateReserveById(Reserve reserve);	//根据记录id更新一条数据
+	
+	public List<Reserve> findReseRecord(String userID,String selfId); // 指定读者ID所有预定记录
 }

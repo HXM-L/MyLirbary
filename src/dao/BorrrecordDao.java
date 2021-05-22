@@ -5,11 +5,9 @@ import java.util.List;
 import bean.Borrrecord;
 import bean.Reserve;
 
-public interface BorrrecordDao {
+public interface BorrrecordDao {	//借阅记录的所有操作
 
-	public Borrrecord findRecordByBorrowerId(String borrowerId);// 查询指定记录id的借阅历史
-
-	public List<Borrrecord> findRecordByBorrower();// 查询所有借阅历史
+	public Borrrecord findRecordByBorrowerId(String borrRecordId);// 查询指定记录id的借阅历史
 
 	public List<Borrrecord> findNowRecordByBorrowerId(String borrowerId);// 查询的指定读者当前的借阅
 
@@ -30,4 +28,11 @@ public interface BorrrecordDao {
 	public List<Borrrecord> findBorrowIng();	//查询没有归还图书的借阅记录
 	
 	public List<Borrrecord> findUrge();	//查询需要催还图书的记录
+	
+	public List<Borrrecord> findRecordByBorrower(String borrowerId);// 查询指定用户ID的需要催还的借阅历史
+	
+	public List<Borrrecord> findAllRecords();// 查询所有借阅历史
+	
+	public List<Borrrecord> findAllRecords(String borrowerId);// 查询指定用户ID的所有借阅历史
+
 }

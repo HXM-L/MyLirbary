@@ -203,6 +203,9 @@ h1.userpagetitle {
 	float: left;
 	margin-left: 20px
 }
+.tbodyColor{
+	color:red;
+}
 </style>
 <script type="text/javascript">
 	function exit() {
@@ -232,19 +235,9 @@ h1.userpagetitle {
 	}
 	
 	function searchRecord() {
-		location.href = "finRecord.do?findURL=Aorderhistory.jsp";
+		location.href = "finRecord.do?findURL=AurgeReturn.jsp";
 	}
 	
-	function Delete(Rid,selfId) { /* 删除按钮 */
-		var r = confirm("您确定要该预定吗？")
-		if (r == true) {
-			console.log("确定");
-			location.href = "Delete.do?AppointPage=Aorderhistory.jsp&rID="+Rid+"&selfId="+selfId;
-		} else {
-			console.log("取消");
-			location.href = "Aorderhistory.jsp";
-		}
-	}
 </script>
 </head>
 <body onload="getDay();error();">
@@ -291,33 +284,31 @@ h1.userpagetitle {
 			<div id="UserMasterRight">
 				<h1 class="userpagetitle">图书借阅信息</h1>
 				<input type="button" value="查询" onclick="searchRecord()" /><br />
-				<table class="tb" cellpadding="7" border="1" width="1250px"
+				<table class="" cellpadding="7" border="1" width="1250px"
 					cellspacing="0">
 					<thead class="tbhead">
 						<tr>
-							<th>预定记录号</th>
-							<th>书架ID号</th>
+							<th>借阅记录号</th>
+							<th>图书ID号</th>
 							<th>图书名称</th>
 							<th>读者账号</th>
-							<th>预定日期</th>
-							<th>取书日期</th>
-							<th>取书状态</th>
-							<th>操作</th>
+							<th>借阅日期</th>
+							<th>还书日期</th>
+							<th>续借</th>
+							<th>超期</th>
 						</tr>
 					</thead>
-					<tbody>
-						<c:forEach var="e" items="${reserveList}">
+					<tbody class="tbodyColor">
+						<c:forEach var="e" items="${UrgeList}">
 							<tr>
-								<td>${e.reserveid}</td>
-								<td>${e.selfId}</td>
+								<td>${e.borrRecordId}</td>
+								<td>${e.bookid}</td>
 								<td>${e.bookName}</td>
-								<td>${e.borowerId}</td>
-								<td>${e.reserveTime}</td>
-								<td>${e.fetchTime}</td>
-								<td>${e.status}</td>
-								<td>
-									<input type="button" value="取消" onclick="Delete('${e.reserveid}','${e.selfId}')" />
-								</td>
+								<td>${e.borrowerId}</td>
+								<td>${e.borrTime}</td>
+								<td>${e.returnTime}</td>
+								<td>${e.aginBorr}</td>
+								<td>${e.overTime}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

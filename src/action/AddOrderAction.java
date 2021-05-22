@@ -21,7 +21,7 @@ public class AddOrderAction implements Action {
 	//实现用户预定图书工能
 
 	@Override
-	public String execute(HttpServletRequest req, HttpServletResponse resp) {	//修改一条预定记录
+	public String execute(HttpServletRequest req, HttpServletResponse resp) {	//添加一条预定记录
 		ReserveDao reserveDao=new ReserveDaoImpl();
 		Reserve reserve=new Reserve();
 		SelfDao selfDao=new SelfDaoImpl();
@@ -40,13 +40,17 @@ public class AddOrderAction implements Action {
 		
 		System.out.println(timeStr1);
 		System.out.println(reserve.getBookName());
-		if (reserveDao.doReserve(reserve)) { //返回操作是否成功
-			int bookNum = selfDao.findBookBySelfId(req.getParameter("selfId")).getBookNum()-1;
-			selfDao.upBookNumber(req.getParameter("selfId"), bookNum);
-			req.setAttribute("error", "预定成功");
-			System.out.println(req.getAttribute("updateFlag"));
-		} else {
-			req.setAttribute("error", "预定失败");
+		System.out.println(req.getParameter("selfId"));
+		if(reserveDao.findReseRecord(reserve.getBorowerId(),req.getParameter("selfId")).size()>0) {
+			req.setAttribute("error", "您已预定过该图书,请及时到馆取书!");
+		}else {
+			if (reserveDao.doReserve(reserve)) { //返回操作是否成功
+				int bookNum = selfDao.findBookBySelfId(req.getParameter("selfId")).getBookNum()-1;
+				selfDao.upBookNumber(req.getParameter("selfId"), bookNum);
+				req.setAttribute("error", "预定成功");
+			} else {
+				req.setAttribute("error", "预定失败");
+			}
 		}
 		return "AcatalogSearch.jsp";
 	}

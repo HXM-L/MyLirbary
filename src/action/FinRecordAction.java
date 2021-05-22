@@ -24,19 +24,19 @@ public class FinRecordAction implements Action { // 查找所有记录
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
 		// 还书日期为空表示没有归还图书
 		HttpSession session = req.getSession();
-		Borrower borrower = (Borrower) req.getSession().getAttribute(("User"));
+
 		String URL = null;
 		if (req.getParameter("findURL").equals("borrowRecord.jsp")) { // 查询所有借阅记录
 			BorrrecordDao bRecord = new BorrrecordDaoImpl();
-			List<Borrrecord> list = bRecord.findRecordByBorrower();
+			List<Borrrecord> list = bRecord.findAllRecords();
 			if(list.size()>0) {
 				session.setAttribute("RecordList", list);
 			}else {
 				req.setAttribute("updateFlag", "记录为空！");
 			}
 			
-			System.out.println(list.get(0).getBorrowerId());
-			System.out.println("图书名:" + list.get(0).getBookName());
+//			System.out.println(list.get(0).getBorrowerId());
+//			System.out.println("图书名:" + list.get(0).getBookName());
 			URL = "borrowRecord.jsp";
 		} else if (req.getParameter("findURL").equals("buyBook.jsp")) {// 查询购书清单
 			BuyBookDao buyDao = new BuyBookDaoImpl();
@@ -68,10 +68,11 @@ public class FinRecordAction implements Action { // 查找所有记录
 			for(Borrrecord item:borrowinglist) {
 				System.out.println(item.getBorrRecordId());
 			}
-			System.out.println("图书名:" + borrowinglist.get(0).getBookName());
+//			System.out.println("图书名:" + borrowinglist.get(0).getBookName());
 			URL = "borrowing.jsp";
 		}else if (req.getParameter("findURL").equals("Aborrowing.jsp")) { // 当前借阅记录
 			BorrrecordDao bRecord = new BorrrecordDaoImpl();
+			Borrower borrower = (Borrower) req.getSession().getAttribute(("User"));
 			List<Borrrecord> borrowinglist = bRecord.findNowRecordByBorrowerId(borrower.getBorrowerId());
 			if(borrowinglist.size()>0) {
 				session.setAttribute("borrowinglist", borrowinglist);
@@ -80,7 +81,7 @@ public class FinRecordAction implements Action { // 查找所有记录
 			}
 //			System.out.println("图书名:" + borrowinglist.get(0).getBookName());
 			URL = "Aborrowing.jsp";
-		}else if (req.getParameter("findURL").equals("urgeReturn.jsp")) { // 需要催还图书记录记录
+		}else if (req.getParameter("findURL").equals("urgeReturn.jsp")) { // 管理员需要所有用户催还图书记录记录
 			BorrrecordDao bRecord = new BorrrecordDaoImpl();
 			List<Borrrecord> list = bRecord.findUrge();
 			if(list.size()>0) {
@@ -88,11 +89,12 @@ public class FinRecordAction implements Action { // 查找所有记录
 			}else {
 				req.setAttribute("updateFlag", "记录为空！");
 			}
-			System.out.println(list.get(0).getBorrowerId());
-			System.out.println("图书名:" + list.get(0).getBookName());
+//			System.out.println(list.get(0).getBorrowerId());
+//			System.out.println("图书名:" + list.get(0).getBookName());
 			URL = "urgeReturn.jsp";
-		}else if (req.getParameter("findURL").equals("Aorderhistory.jsp")) { // 需要催还图书记录记录
+		}else if (req.getParameter("findURL").equals("Aorderhistory.jsp")) { //查询指定用户的预定记录
 			ReserveDao reserDao = new ReserveDaoImpl();
+			Borrower borrower = (Borrower) req.getSession().getAttribute(("User"));
 			List<Reserve> reserveList = reserDao.findReseRecord(borrower.getBorrowerId());
 			if(reserveList.size()>0) {
 				session.setAttribute("reserveList", reserveList);
@@ -100,7 +102,31 @@ public class FinRecordAction implements Action { // 查找所有记录
 				req.setAttribute("updateFlag", "您目前没有预定书籍。");
 			}
 			URL = "Aorderhistory.jsp";
-		} 
+		}else if (req.getParameter("findURL").equals("AurgeReturn.jsp")) { // 需要指定用户催还图书记录记录
+			BorrrecordDao bRecord = new BorrrecordDaoImpl();
+			Borrower borrower = (Borrower) req.getSession().getAttribute(("User"));
+			List<Borrrecord> list = bRecord.findRecordByBorrower(borrower.getBorrowerId());
+			if(list.size()>0) {
+				session.setAttribute("UrgeList", list);
+				req.setAttribute("updateFlag", "请及时归还超期图书！");
+			}else {
+				req.setAttribute("updateFlag", "您没有超期未还图书,请继续保持良好信用！");
+			}
+//			System.out.println(list.get(0).getBorrowerId());
+//			System.out.println("图书名:" + list.get(0).getBookName());
+			URL = "AurgeReturn.jsp";
+		}else if (req.getParameter("findURL").equals("Abooksborrowedhistory.jsp")) { // 需要指定用户所有图书借阅记录
+			BorrrecordDao bRecord = new BorrrecordDaoImpl();
+			Borrower borrower = (Borrower) req.getSession().getAttribute(("User"));
+			List<Borrrecord> list = bRecord.findAllRecords(borrower.getBorrowerId());
+			if(list.size()>0) {
+				session.setAttribute("UrgeList", list);
+//				req.setAttribute("updateFlag", "请及时归还超期图书！");
+			}else {
+				req.setAttribute("updateFlag", "记录为空");
+			}
+			URL = "Abooksborrowedhistory.jsp";
+		}
 		return URL;
 	}
 }
