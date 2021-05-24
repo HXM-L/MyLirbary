@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    width: 100%;
+}
+.container {
+    width: 700px;
+    height: 500px;
+    margin: 0px auto;
+    padding: 20px 100px;
+    border: 2px solid #ff0000;
+    background-color: bisque;
+}
+font{
+    color: #0423ea;
+}
+input {
+    width: 250px;
+    height: 25px;
+}
+input[type=radio]{
+    width: 25px;
+    height: 10px;
+}
+input[type=submit]{
+    width: 50px;
+    height: 20px;
+}

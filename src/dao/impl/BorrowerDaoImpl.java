@@ -68,5 +68,26 @@ public class BorrowerDaoImpl extends BaseDao implements BorrowerDao {
 		return isFlag;
 	}
 
+	@Override
+	public List<Borrower> findAllBorrower() {
+		return this.query("select * from borrower", new ArrayList<Object>(), Borrower.class);
+	}
+
+	@Override
+	public boolean addBorrower(Borrower borrower) {
+		List<Object> lp = new ArrayList<Object>();
+		String sql="insert into borrower values(?,?,?,?,?,?,?,?,?)";
+		lp.add(borrower.getBorrowerId());
+		lp.add(borrower.getName());
+		lp.add(borrower.getPassword());
+		lp.add(borrower.getRemarks());
+		lp.add(borrower.getPhone());
+		lp.add(borrower.getMoney());
+		lp.add(borrower.getNum());
+		lp.add(borrower.getStatus());
+		lp.add(borrower.getIdentityId());
+		return this.upadte(sql, lp);
+	}
+
 
 }
