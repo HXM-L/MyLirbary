@@ -62,6 +62,7 @@ public class FinRecordAction implements Action { // 查找所有记录
 			List<Borrrecord> borrowinglist = bRecord.findBorrowIng();
 			if(borrowinglist.size()>0) {
 				session.setAttribute("borrowinglist", borrowinglist);
+				System.out.println(borrowinglist.get(0).getBookName());
 			}else {
 				req.setAttribute("updateFlag", "记录为空！");
 			}

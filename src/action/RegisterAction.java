@@ -24,13 +24,8 @@ public class RegisterAction implements Action { // ÐÞ¸ÄÃÜÂë
 		String realyName = null;
 		String remarks=null;
 		String URL = null;
-		try {
-			realyName = new String(req.getParameter("realyName").getBytes("iso-8859-1"), "utf-8");
-			remarks = new String(req.getParameter("remarks").getBytes("iso-8859-1"), "utf-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			realyName = req.getParameter("realyName");
+			remarks = req.getParameter("remarks");
 		BorrowerDao bDao=new BorrowerDaoImpl();
 		List<Borrower> bList=bDao.findAllBorrower();
 		int length=bList.size();

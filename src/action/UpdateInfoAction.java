@@ -46,13 +46,8 @@ public class UpdateInfoAction implements Action {	//ÐÞ¸ÄÐÅÏ¢
 			Borrower borrower = (Borrower) req.getSession().getAttribute(("User"));
 			System.out.println(borrower.getBorrowerId());
 			System.out.println(borrower.getName());
-			try {
-				borrower.setName(new String(req.getParameter("username").getBytes("iso-8859-1"), "utf-8"));
-				borrower.setRemarks(new String(req.getParameter("remarks").getBytes("iso-8859-1"), "utf-8"));
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				borrower.setName(req.getParameter("username"));
+				borrower.setRemarks(req.getParameter("remarks"));
 			borrower.setPhone(req.getParameter("phone"));
 //			borrower.setIdentityId(Integer.parseInt(req.getParameter("type")));
 //			borrower.setStatus(req.getParameter("status"));
