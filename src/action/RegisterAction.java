@@ -59,7 +59,8 @@ public class RegisterAction implements Action { // 修改密码
 		borrower.setIdentityId(identityId);
 		System.out.println(borrowerId);
 		if(bDao.addBorrower(borrower)) {
-			req.setAttribute("error", "用户注册成功!欢迎登陆");
+			req.setAttribute("error", "用户注册成功!您好的账号是:"+borrowerId);
+			req.setAttribute("borrowerId", borrowerId);
 			URL = "login.jsp";
 		}else {
 			req.setAttribute("error", "用户注册失败!");

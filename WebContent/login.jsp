@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>欢迎登录</title>
+<script src="./js/jquery-3.6.0.min.js"></script>
 <style>
 .alert {
 	width: 100%;
@@ -76,10 +77,17 @@
 		}
 	}
 	<%String error = (String) request.getAttribute("error");%>
+	<%String borrowerId = (String) request.getAttribute("borrowerId");%>
 	function error(){
 		var error = '<%=error%>';
 		if (error != "null") {
 			alert(error);
+		}
+		var borrowerId = '<%=borrowerId%>';
+		if(borrowerId!="null"){
+			var $loginName = $("#name");
+			$loginName.val(borrowerId);
+			console.log(borrowerId);
 		}
 	}
 </script>

@@ -54,7 +54,7 @@ public class LoginAction implements Action {	//登录操作
 				session.setAttribute("User", admin);
 				returnJsp= "admin.jsp";
 			}else {
-				req.setAttribute("str","用户名或密码错误!");
+				req.setAttribute("error","用户名或密码错误!");
 				returnJsp= "login.jsp";
 			}
 		}else{
@@ -69,7 +69,7 @@ public class LoginAction implements Action {	//登录操作
 				System.out.println(borrower.getIdentityId());
 				returnJsp= "ApersonalInfo.jsp";
 			}else {
-				req.setAttribute("str","用户名或密码错误!");
+				req.setAttribute("error","用户名或密码错误!");
 				returnJsp= "login.jsp";
 			}
 		}
