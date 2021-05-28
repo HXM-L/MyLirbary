@@ -162,7 +162,10 @@
 				</thead>
 				<tfoot align="center">
 					<tr>
-						<td colspan="2"><input type="submit" value="提交" /></td>
+						<td colspan="2">
+						<input type="submit" value="提交" />
+						<a href="login.jsp" style="text-decoration: none;"><input type="button" value="返回" /></a>
+						</td>
 					</tr>
 				</tfoot>
 				<tbody align="left">

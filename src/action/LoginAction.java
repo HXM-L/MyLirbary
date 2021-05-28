@@ -45,7 +45,6 @@ public class LoginAction implements Action {	//登录操作
 		session.setAttribute("typeList", typeList);
 		session.setAttribute("idList", idList);
 		
-		
 		if(loginType==1) {
 			Admin admin=adminDao.findAdmin(id, password);	//管理员
 			if(admin!=null) {

@@ -289,7 +289,7 @@ h1.userpagetitle {
 				</div>
 			</div>
 			<div id="UserMasterRight">
-				<h1 class="userpagetitle">图书借阅信息</h1>
+				<h1 class="userpagetitle">图书预定信息</h1>
 				<input type="button" value="查询" onclick="searchRecord()" /><br />
 				<table class="tb" cellpadding="7" border="1" width="1250px"
 					cellspacing="0">

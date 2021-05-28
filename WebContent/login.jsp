@@ -122,6 +122,7 @@
 				</div>
 			</form>
 			<hr />
+			<a href="register.jsp" style="text-decoration: none;">注册账号</a>
 			<a href="#" style="text-decoration: none;">忘记密码</a>
 		</div>
 	</center>
