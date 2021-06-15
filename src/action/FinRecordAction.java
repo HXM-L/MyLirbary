@@ -51,18 +51,25 @@ public class FinRecordAction implements Action { // 查找所有记录
 		} else if (req.getParameter("findURL").equals("orderhistory.jsp")) { // 预约图书记录
 			ReserveDao reserDao = new ReserveDaoImpl();
 			List<Reserve> reserveList = reserDao.findReseRecord();
-			if(reserveList.size()>0) {
+			if(reserveList.size()>=0) {
 				session.setAttribute("reserveList", reserveList);
+				if(reserveList.size()==0) {
+					req.setAttribute("updateFlag", "记录为空！");
+				}
 			}else {
-				req.setAttribute("updateFlag", "记录为空！");
+				
 			}
 			URL = "orderhistory.jsp";
 		}else if (req.getParameter("findURL").equals("borrowing.jsp")) { // 当前借阅记录
 			BorrrecordDao bRecord = new BorrrecordDaoImpl();
 			List<Borrrecord> borrowinglist = bRecord.findBorrowIng();
-			if(borrowinglist.size()>0) {
+			if(borrowinglist.size()>=0) {
 				session.setAttribute("borrowinglist", borrowinglist);
+				if(borrowinglist.size()==0) {
+					req.setAttribute("updateFlag", "记录为空！");
+				}
 				System.out.println(borrowinglist.get(0).getBookName());
+				System.out.println(borrowinglist.size());
 			}else {
 				req.setAttribute("updateFlag", "记录为空！");
 			}
@@ -75,8 +82,11 @@ public class FinRecordAction implements Action { // 查找所有记录
 			BorrrecordDao bRecord = new BorrrecordDaoImpl();
 			Borrower borrower = (Borrower) req.getSession().getAttribute(("User"));
 			List<Borrrecord> borrowinglist = bRecord.findNowRecordByBorrowerId(borrower.getBorrowerId());
-			if(borrowinglist.size()>0) {
+			if(borrowinglist.size()>=0) {
 				session.setAttribute("borrowinglist", borrowinglist);
+				if(borrowinglist.size()==0) {
+					req.setAttribute("updateFlag", "记录为空！");
+				}
 			}else {
 				req.setAttribute("updateFlag", "记录为空！");
 			}

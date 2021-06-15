@@ -54,5 +54,4 @@ public class AddOrderAction implements Action {
 		}
 		return "AcatalogSearch.jsp";
 	}
-
 }

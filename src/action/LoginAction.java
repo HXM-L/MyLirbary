@@ -38,7 +38,7 @@ public class LoginAction implements Action {	//登录操作
 		//查询图书类型
 		BookTypeDao typeDao=new BookTypeDaoImpl();
 		IdentityDao idDao=new IdentityDaoImpl();
-		List<BookType> typeList=typeDao.findAllType();
+		List<BookType> typeList=typeDao.findAllType(); 
 		List<Identity> idList=idDao.findAllIdentity();
 		System.out.println(typeList.get(0).getName());
 		System.out.println(idList.get(0).getName());
@@ -75,5 +75,4 @@ public class LoginAction implements Action {	//登录操作
 		
 		return returnJsp;
 	}
-
 }

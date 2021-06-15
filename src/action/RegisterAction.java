@@ -63,5 +63,4 @@ public class RegisterAction implements Action { // ĞŞ¸ÄÃÜÂë
 		}
 		return URL;
 	}
-
 }
